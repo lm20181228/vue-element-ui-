@@ -8,7 +8,7 @@
 					<!--	<div class="grid-content bg-purple">我的</div>-->
 					</el-col>
 					<el-col :span="10">
-						<router-link to="/ratings" class="grid-content bg-purple">推荐</router-link>
+						<router-link to="/find" class="grid-content bg-purple">推荐</router-link>
 						
 						<!--<div class="grid-content bg-purple">推荐</div>-->
 					</el-col>
