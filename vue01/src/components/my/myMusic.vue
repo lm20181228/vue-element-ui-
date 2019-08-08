@@ -7,6 +7,10 @@
 		  			<span class="socialIcon">{{item.icon}}</span>
 		  			<span class="socialName">{{item.name}}</span>
 		  		</li>
+		  		<li>
+		  			<span class="socialIcon"><i class="el-icon-plus"></i></span>
+		  			<span class="socialName">添加</span>
+		  		</li>
 		  	</ul>
 	  	</div>
 		<!--社交推荐部分 E-->
@@ -15,9 +19,9 @@
 		  	<div v-for="item in localInfo" class="text localItem">
 		  		<router-link to="/localMusic">
 		  			<el-row :gutter="24">
-		  				<el-col :span="4">
-		  					<span class="localInfoIcon">
-		  						sdf
+		  				<el-col :span="4" class="text-center">
+		  					<span class="localInfoIcon ">
+		  						<i :class="item.icon"></i>
 		  						<!--<img :src="item.icon" alt="" />-->
 		  					</span>
 		  				</el-col>
@@ -34,62 +38,87 @@
 	  		<el-collapse >
 	  			<!--v-model="activeNames" @change="handleChange"-->
 	  			<el-collapse-item   name = "1">
-	  				<div class="collapse-title songSheetTitle" slot="title">我的歌单({{songsLists.length}})
+	  				<div class="collapse-title songSheetPosition" slot="title">创建的歌单({{songsLists.length}})
 	  					<div class="operation">
-	  						<span class="addMyList" @click="dialogFormVisible = true">+</span>
-	  						<span class="moreOperations"  @click="drawer = true">:</span>
+	  						<span class="addMyList" @click.stop="dialogFormVisible = true">+</span>
+	  						<span class="moreOperations"  @click.stop="drawer = true,clickList=0">:</span>
 	  					</div>
 	  				</div>
 	  				
-	  				<div class="text" v-for="item in songsLists.list">
+	  				<div class="text songSheetPosition" v-for="(item,i) in songsLists.list">
 				  		<router-link to="/localMusic">
 				  			<el-row :gutter="24">
 				  				<el-col :span="4">
-				  					<span class="songSheetImg"><img :src="item.img" alt="" /></span>
+				  					<span class="songSheetImg "><img :src="item.img" alt="" /></span>
 				  				</el-col>
-				  				<el-col :span="16">
+				  				<el-col :span="20">
 				  					<span class="">{{item.name}}</span>
 				  					<p>{{item.mun}}</p>
 				  				</el-col>
-				  				<el-col :span="4">
-				  					<span class="">+</span>
-				  				</el-col>
+				  				
 				  			</el-row>
 				  		</router-link>	
+				  		<el-col :span="4" class="operation">
+		  					<span class="" @click.stop="songDrawer=true ,clickList=0, songIndex=i" >：</span>
+		  				</el-col>
 				  	</div>
 	  			</el-collapse-item>
 	  			<el-collapse-item name = "2">
-	  				<span class="collapse-title" slot="title">收藏的歌单({{collectionSongsLists.length}})</span>
-	  				<div class="text " v-for="item in collectionSongsLists.lists">
+	  				<div class="collapse-title songSheetPosition" slot="title">收藏的歌单({{collectionSongsLists.length}})
+	  					<div class="operation">
+	  						<span class="moreOperations"  @click.stop="drawer = true,clickList=1">:</span>
+	  					</div>
+	  				</div>
+	  				<div class="text songSheetPosition" v-for="(item,i) in collectionSongsLists.list">
 				  		<router-link to="/localMusic">
 				  			<el-row :gutter="24">
 				  				<el-col :span="4">
 				  					<span class="songSheetImg"><img :src="item.img" alt="" /></span>
 				  				</el-col>
-				  				<el-col :span="16">
+				  				<el-col :span="20">
 				  					<span class="">{{item.name}}</span>
 				  					<p>{{item.mun}}</p>
 				  				</el-col>
-				  				<el-col :span="4">
-				  					<span class="">+</span>
-				  				</el-col>
 				  			</el-row>
 				  		</router-link>	
+				  		<el-col :span="4"  class="operation">
+		  					<span @click.stop="songDrawer=true ,clickList=1, songIndex=i">:</span>
+		  				</el-col>
 				  	</div>
 	  			</el-collapse-item>
 	  		</el-collapse>
 	  	</div>
 	  	<!--歌单部分E-->
 	  	<!--新增我的歌单弹窗S-->
-	  	
-	  	<!--新增我的歌单弹窗E-->
-		<el-drawer
-		  title="创建的歌单"
-		  :visible.sync="drawer"
-		  :direction="direction"
-		  >
-		  <span>我来啦!</span>
+		<el-drawer :title="clickList==0?'创建的歌单':'收藏歌单'" :visible.sync="drawer" :direction="direction" :show-close="showClose">
+		  	<el-row :gutter="24" v-if="clickList==0">
+		  		<el-col :span="4"  class="text-center"><i class="el-icon-circle-plus-outline"></i></el-col>
+		  		<el-col :span="20" class="el_borderB" @click.native="dialogFormVisible = true">新增歌单</el-col>
+		  	</el-row>
+		  	<el-row :gutter="24">
+		  		<el-col :span="4"  class="text-center"><i class="el-icon-tickets"></i></el-col>
+		  		<el-col :span="20" class="el_borderB">歌单管理</el-col>
+		  	</el-row>
 		</el-drawer>
+	  	<!--新增我的歌单弹窗E-->
+	  	<!--编辑歌单信息S-->
+		<el-drawer :title="'歌单：'+clickList==0?songsLists.list[songIndex].name:collectionSongsLists.list[songIndex].name" :visible.sync="songDrawer" :direction="direction" :show-close="showClose">
+			<div>
+				<el-row :gutter="24" v-for="(item,i) in editSongsList" v-if="(clickList==0||i!=2)" @click.native.stop="delSong(songIndex)">
+					
+					
+					<el-col :span="4"  class="text-center">
+						<i :class="item.icon"></i>
+					</el-col>
+					<el-col :span="20" class="el_borderB">
+						{{item.name}}
+					</el-col>
+				</el-row>
+				
+			</div>
+		</el-drawer>
+	  	<!--编辑歌单信息E-->
+		
 		<!--新建歌单信息S-->
 		<el-dialog title="新建歌单" :visible.sync="dialogFormVisible">
 			  <el-form :model="form">
@@ -106,7 +135,6 @@
 
 <script>
 	 export default {
-	 	
 	    data() {
 	      return {
 	      	//社交推荐
@@ -147,46 +175,48 @@
 	        localInfo:[{
 	        	id:1,
 	        	name:"本地音乐",
-	        	icon:"/static/img/wangyiyun.cb53c5d.png"
+	        	icon:"el-icon-headset"
 	        },{
 	        	id:2,
 	        	name:"最近播放",
-	        	icon:"/static/img/wangyiyun.cb53c5d.png"
+	        	icon:"el-icon-headset"
 	        },{
 	        	id:3,
 	        	name:"下载管理",
-	        	icon:"/static/img/wangyiyun.cb53c5d.png"
+	        	icon:"el-icon-download"
 	        },{
 	        	id:4,
 	        	name:"我的电台",
-	        	icon:"/static/img/wangyiyun.cb53c5d.png"
+	        	icon:"el-icon-microphone"
 	        },{
 	        	id:5,
 	        	name:"我的收藏",
-	        	icon:"/static/img/wangyiyun.cb53c5d.png"
+	        	icon:"el-icon-star-off"
 	        }],
 	        activeNames: ['1'],
+	        songIndex:0,//记录当前操作歌单的下表
+	        clickList:0,//当前点击操作的歌单是我的歌单（0）还是收藏歌单（1）
 	        //创建歌单
 	        songsLists:{
 	        	list:[{
 		        	id:0,
 		        	name:"歌单1",
-		        	img:"/static/img/wangyiyun.cb53c5d.png",
+		        	img:"/static/img/my/wangyiyun.png",
 		        	mun:12
 		        },{
 		        	id:1,
 		        	name:"歌单2",
-		        	img:"/static/img/wangyiyun.cb53c5d.png",
+		        	img:"/static/img/my/wangyiyun.png",
 		        	mun:1
 		        },{
 		        	id:2,
 		        	name:"歌单3",
-		        	img:"/static/img/wangyiyun.cb53c5d.png",
+		        	img:"/static/img/my/wangyiyun.png",
 		        	mun:30
 		        },{
 		        	id:3,
 		        	name:"歌单4",
-		        	img:"/static/img/wangyiyun.cb53c5d.png",
+		        	img:"/static/img/my/wangyiyun.png",
 		        	mun:24
 		        }],
 	        	length:4
@@ -194,21 +224,22 @@
 	        
 	        /*收藏歌单*/
 	       	collectionSongsLists:{
-	       		lists:[{
+	       		list:[{
 		        	id:1,
 		        	name:"收藏歌单1",
-		        	img:"/static/img/wangyiyun.cb53c5d.png",
+		        	img:"/static/img/my/wangyiyun.png",
 		        	mun:30
 		        },{
 		        	id:2,
 		        	name:"收藏歌单2",
-		        	img:"/static/img/wangyiyun.cb53c5d.png",
+		        	img:"/static/img/my/wangyiyun.png",
 		        	mun:24
 		        }],
 		        length:2
 	       	},
-	       	drawer: false,
-        	direction: 'btt',
+	       	drawer: false,//是否显示 Drawer，支持 .sync 修饰符
+        	direction: 'btt',//弹框出现方向
+        	showClose:false,//弹框关闭按钮是否存在
         	dialogTableVisible: false,
         	dialogFormVisible: false,
         	form: {
@@ -221,7 +252,24 @@
 	          resource: '',
 	          desc: ''
 	        },
-	        formLabelWidth: '120px'
+	        formLabelWidth: '120px',
+	        songDrawer:false,
+	        //编辑歌单操作
+	        editSongsList:[
+	        	{
+	        		icon:"el-icon-download",
+	        		name:"下载"
+	        	},{
+	        		icon:"el-icon-share",
+	        		name:"分享"
+	        	},{
+	        		icon:"el-icon-edit",
+	        		name:"编辑"
+	        	},{
+	        		icon:"el-icon-delete",
+	        		name:"删除"
+	        	},
+	        ]
 	      };
 	    },
 	    methods: {
@@ -233,25 +281,43 @@
 	      	console.log("asd")
 	      },
 	      cancel(){
+	      	this.form.name="";//清空表单填写数据
 	      	this.dialogFormVisible=false;
 	      },submit(){
-	      	console.log("提交");
+	      	if(!this.form.name){
+	      		this.$message('歌单名不能为空');
+	      		this.dialogFormVisible=false;
+	      		return false;
+	      	}
 	      	var newSongs={
 	        	id:this.songsLists.length,
 	        	name:this.form.name,
-	        	img:"/static/img/wangyiyun.cb53c5d.png",
+	        	img:"/static/img/my/wangyiyun.png",
 	        	mun:0
 	       	};
-	       	this.songsLists.list.unshift(newSongs);
-	       	this.songsLists.length++;
-	       	this.form.name="";
+	       	this.songsLists.list.unshift(newSongs);//把新建歌单放置在歌单列表前
+	       	this.songsLists.length++;//修改歌单个数
+	       	this.form.name="";//清空表单填写数据
 	      	this.dialogFormVisible=false;
+	      },
+	      delSong(index){
+	      	var songList="";
+	      	this.clickList==0?songList=this.songsLists:songList=this.collectionSongsLists;
+	      	songList.list.splice(index,1);
+	      	songList.length--
+	      	this.songDrawer = false;
+	      	//删除歌单
+
 	      }
 	    }
 	  }
 </script>
 
 <style>
+	.text-center{
+		text-align: center;
+	}
+
 	.socialDiv{
 		/*width: 100%;*/
 	    overflow: auto;
@@ -337,11 +403,10 @@
         flex: 1 0 auto;
         order: -1;
     }
-    .songSheetTitle{
+    .songSheetPosition{
     	position: relative;
     }
     .operation{
-    	border: 1px solid red;
     	position: absolute;
     	top: 0;
     	right: 0;
@@ -352,4 +417,26 @@
     	width: 18px;
     	text-align: center;
     }
+    /*控制下弹框的样式*/
+   .el-drawer{
+   		height: auto!important;
+   		padding-bottom: 10px!important;
+   		border-radius: 10px 10px 0 0;
+   }
+   .el-drawer__header{
+   	    height: 50px;
+	    margin: 0;
+	    padding: 0;
+	    line-height: 50px;
+   }
+   .el-drawer__header,.el_borderB{
+   		border-bottom: 1px solid #dcdcdc;
+   }
+   .el-drawer__header{
+	   	padding: 0 12px;
+   }
+   .el-drawer__body{
+	    height: 40px;
+	    line-height: 40px;
+   }
 </style>
