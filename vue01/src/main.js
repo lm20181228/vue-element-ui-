@@ -9,8 +9,9 @@ Vue.use(ElementUI)
 
 new Vue({
   el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
+  router,//路由
+ components: { App },//组件
+	template: '<App/>'//模板
+  //render: h => h(App) // 让我们可以通过JavaScript的方式去初始化一个模板,吧APP组件传入然后就可以去渲染 app 组件
 })
 

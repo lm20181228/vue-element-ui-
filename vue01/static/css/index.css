@@ -58,3 +58,60 @@ a{
 .bg-Top{
 	background-color: #d5e2f1;
 }
+/*尾部歌曲信息*/
+.song_portrait{
+	padding: 0;
+}
+.song_portrait>img{
+	width: 100%;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+.footer_songInfo{
+	padding: 4px 0;
+}
+.footer_songInfo>p{
+	height: 26px;
+    line-height: 26px;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #666;
+}
+.footer_songInfo>.song_name{
+	font-size: 14px;
+	color: #333;
+}
+.song_icon{
+	font-size: 30px;
+}
+/*用户信息侧边栏样式*/
+.leftCon .el-drawer{
+	border-radius: 0!important;
+	background-image: url("../img/bgPic.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+.leftCon .el-drawer .el-drawer__header{
+	border: none!important;
+}
+.userInfo{
+	text-align: center;
+}
+.userPortrai{
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	border: 1px solid #fff;
+}
+.userName{
+	height: 20px;
+	line-height: 20px;
+}
+.userMain{
+	border: 1px solid red;
+}
+.userFooter{
+	width: 80%;
+	
+}

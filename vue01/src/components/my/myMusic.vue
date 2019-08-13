@@ -104,17 +104,14 @@
 	  	<!--编辑歌单信息S-->
 		<el-drawer :title="'歌单：'+clickList==0?songsLists.list[songIndex].name:collectionSongsLists.list[songIndex].name" :visible.sync="songDrawer" :direction="direction" :show-close="showClose">
 			<div>
-				<el-row :gutter="24" v-for="(item,i) in editSongsList" v-if="(clickList==0||i!=2)" @click.native.stop="delSong(songIndex)">
-					
-					
-					<el-col :span="4"  class="text-center">
+				<el-row :gutter="24" v-for="(item , index) in editSongsList" @click.native.stop="delSong(songIndex)">
+					<el-col :span="4"  class="text-center" v-show="!(index==2&&clickList==1)">
 						<i :class="item.icon"></i>
 					</el-col>
-					<el-col :span="20" class="el_borderB">
+					<el-col :span="20" class="el_borderB" v-show="!(index==2&&clickList==1)">
 						{{item.name}}
 					</el-col>
 				</el-row>
-				
 			</div>
 		</el-drawer>
 	  	<!--编辑歌单信息E-->
