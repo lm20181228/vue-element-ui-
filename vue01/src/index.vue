@@ -55,7 +55,7 @@
 		<!--用户信息侧边栏部分S-->
 		<el-drawer direction="ltr" :visible.sync='userInfoDrawer' class="leftCon" :show-close="showClose" size="80%">
 			<el-container class="userInfo">
-				<el-header>
+				<el-header class="userHeader">
 					<!--头像-->
 					<img src="../static/img/bgPic.jpg" class="userPortrai" alt="" />
 					<!--用户姓名-->
@@ -63,10 +63,25 @@
 					<!--等级-->
 				</el-header>
 				<el-main class="userMain">
-					中心内容
+					<div class="musicModule">
+						<el-row :gutter="24">
+							<el-col :span="6"><i class="el-icon-message moduleIcon"></i><span class="moduleName">我的消息</span></el-col>
+							<el-col :span="6"><i class="el-icon-user moduleIcon"></i><span  class="moduleName">我的好友</span></el-col>
+							<el-col :span="6"><i class="el-icon-goods moduleIcon"></i><span  class="moduleName">个性换肤</span></el-col>
+							<el-col :span="6"><i class="el-icon-service moduleIcon"></i><span  class="moduleName">听歌识曲</span></el-col>
+						</el-row>
+					</div>
+					<div v-for="item in userMoudel" :key="o" class="text item ">
+					    	<i :class="item.icon"></i> <span>{{item.name}}</span>
+					  	</div>
 				</el-main>
 				<el-footer class="fixedFooter userFooter">
-					脚本文件
+					<el-row :gutter="24">
+						<el-col :span="10"><i class="el-icon-moon"></i><span>夜间模式</span></el-col>
+						<!--<el-col :span="10"><i class="el-icon-sunny"></i><span>日间模式</span></el-col>-->
+						<el-col :span="7"><i class="el-icon-setting"></i><span>设置</span></el-col>
+						<el-col :span="7"><i class="el-icon-caret-right"></i><span>退出</span></el-col>
+					</el-row>
 				</el-footer>
 			</el-container>
 		</el-drawer>
@@ -81,7 +96,30 @@
 	 	data(){
 	 		return{
 	 			userInfoDrawer:false,
-	 			showClose:false
+	 			showClose:false,
+	 			userMoudel:[
+	 				{
+	 					id:0,
+	 					name:"定时停止播放",
+	 					icon:"el-icon-timer"
+	 				},{
+	 					id:1,
+	 					name:"扫一扫",
+	 					icon:"el-icon-full-screen"
+	 				},{
+	 					id:2,
+	 					name:"音乐闹钟",
+	 					icon:"el-icon-alarm-clock"
+	 				},{
+	 					id:3,
+	 					name:"音乐云盘",
+	 					icon:"el-icon-cloudy"
+	 				},{
+	 					id:4,
+	 					name:"加入网易音乐人",
+	 					icon:"el-icon-headset"
+	 				}	 			
+	 			]
 	 		}
 	 	},
 	 	method:{

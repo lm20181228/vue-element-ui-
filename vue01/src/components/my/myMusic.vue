@@ -127,10 +127,14 @@
 			  </div>
 		</el-dialog>
 		<!--新建歌单信息E-->
+		<!-- 使用food组件 ，并传入一个选中的商品 -->
+	    <!-- ref 用来调用 子组件的方法 show  -->
+	    <food @add="addFood" :food="selectedFood" ref="foods"></food>
 	</div>
 </template>
 
 <script>
+	 import songSheet from '../songSheet/songSheet';
 	 export default {
 	    data() {
 	      return {
@@ -305,7 +309,17 @@
 	      	this.songDrawer = false;
 	      	//删除歌单
 
-	      }
+	      },selectFood(food, event) { // 设置选中的商品以便传递给 food组件
+	        if (!event._constructed) {
+	          return;
+	        }
+	        this.selectedFood = food;
+	        this.$refs.foods.show(); // 调用 子组件 food 的show方法
+      	},
+	    addFood(target) { // 监听到的组件的事件回调
+	        this._drop(target);
+	    }
+	      
 	    }
 	  }
 </script>

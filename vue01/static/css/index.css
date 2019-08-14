@@ -95,7 +95,12 @@ a{
 .leftCon .el-drawer .el-drawer__header{
 	border: none!important;
 }
-.userInfo{
+
+.userInfo .el-header{
+	height: auto!important;
+	padding: 10px 0;
+}
+.userHeader{
 	text-align: center;
 }
 .userPortrai{
@@ -108,10 +113,30 @@ a{
 	height: 20px;
 	line-height: 20px;
 }
+.moduleIcon{
+	color: red;
+	font-size: 20px;
+}
 .userMain{
-	border: 1px solid red;
+	padding: 0;
+		font-size: 14px;
+	background: rgba(250,250,250,0.8);
+}
+.musicModule div{
+	padding: 0!important;
+	
 }
 .userFooter{
 	width: 80%;
-	
+}
+.musicModule{
+	text-align: center;
+	border-bottom: 1px solid red;
+
+}
+.moduleName{
+    display: block;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
 }
