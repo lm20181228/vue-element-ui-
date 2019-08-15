@@ -71,7 +71,7 @@
 							<el-col :span="6"><i class="el-icon-service moduleIcon"></i><span  class="moduleName">听歌识曲</span></el-col>
 						</el-row>
 					</div>
-					<div v-for="item in userMoudel" :key="o" class="text item ">
+					<div v-for="(item,i) in userMoudel" :key="i" class="text item ">
 					    	<i :class="item.icon"></i> <span>{{item.name}}</span>
 					  	</div>
 				</el-main>
@@ -80,7 +80,7 @@
 						<el-col :span="10"><i class="el-icon-moon"></i><span>夜间模式</span></el-col>
 						<!--<el-col :span="10"><i class="el-icon-sunny"></i><span>日间模式</span></el-col>-->
 						<el-col :span="7"><i class="el-icon-setting"></i><span>设置</span></el-col>
-						<el-col :span="7"><i class="el-icon-caret-right"></i><span>退出</span></el-col>
+						<el-col :span="7"><i class="el-icon-switch-button"></i><span>退出</span></el-col>
 					</el-row>
 				</el-footer>
 			</el-container>

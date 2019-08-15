@@ -2,6 +2,8 @@
 	padding: 0;
 	margin: 0;
     box-sizing: content-box;
+    font-size: 16px;
+    color: #333;
 }
 a{
 	text-decoration: none;
@@ -131,7 +133,7 @@ a{
 }
 .musicModule{
 	text-align: center;
-	border-bottom: 1px solid red;
+	/*border-bottom: 1px solid red;*/
 
 }
 .moduleName{
@@ -139,4 +141,84 @@ a{
     font-size: 12px;
     height: 20px;
     line-height: 20px;
+}
+/*歌单详情样式*/
+.songSheets{
+    position: fixed;
+    top: 0px;
+    left: 0;
+    bottom: 60px;
+    
+    z-index: 3;
+    background: #fff;
+    overflow: auto;
+}
+.songSheetTop{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+}
+.songOperate{
+	text-align: right;
+}
+.songSheetTop .infoIcon{
+	font-size: 24px;
+	margin: 0 10px;
+}
+.songSheetInfo{
+	position: relative;
+}
+/*歌单信息部分*/
+.songInfoMoudel{
+	padding: 60px 10px 10px;
+	background: #DCDCDC;
+}
+.sheetInfo>.sheetName{
+	font-size: 24px;
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.author>img{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+.author>span{
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 14px ;
+}
+.editer{
+	position: absolute;
+	bottom: 20px;
+	font-size: 12px;
+}
+.songImg img{
+	width: 100%;
+}
+.operateBtns{
+	text-align: center;
+	padding: 8px 0;
+}
+/*歌曲列表*/
+.songsList{
+	padding: 10px;
+}
+.songsList>.song{
+	height: 50px;
+	line-height: 50px;
+}
+.text-center{
+	text-align: center;
+}
+.text-right{
+	text-align: right;
 }

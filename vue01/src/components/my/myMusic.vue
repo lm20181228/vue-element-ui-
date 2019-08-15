@@ -45,8 +45,8 @@
 	  					</div>
 	  				</div>
 	  				
-	  				<div class="text songSheetPosition" v-for="(item,i) in songsLists.list">
-				  		<router-link to="/localMusic">
+	  				<div class="text songSheetPosition" v-for="(item,i) in songsLists.list" :key="i"  @click="selectFood(item, $event)">
+				  		<div>
 				  			<el-row :gutter="24">
 				  				<el-col :span="4">
 				  					<span class="songSheetImg "><img :src="item.img" alt="" /></span>
@@ -57,7 +57,7 @@
 				  				</el-col>
 				  				
 				  			</el-row>
-				  		</router-link>	
+				  		</div>	
 				  		<el-col :span="4" class="operation">
 		  					<span class="" @click.stop="songDrawer=true ,clickList=0, songIndex=i" >：</span>
 		  				</el-col>
@@ -121,6 +121,7 @@
 			  <el-form :model="form">
 			    <el-input v-model="form.name" autocomplete="off" ></el-input>
 			  </el-form>
+			  
 			  <div slot="footer" class="dialog-footer">
 			    <span @click="cancel()">取 消</span>
 			    <span type="primary"  @click="submit()">提  交</span>
@@ -129,7 +130,7 @@
 		<!--新建歌单信息E-->
 		<!-- 使用food组件 ，并传入一个选中的商品 -->
 	    <!-- ref 用来调用 子组件的方法 show  -->
-	    <food @add="addFood" :food="selectedFood" ref="foods"></food>
+	    <songSheet  :songSheet="selectedSongSheet" ref="songSheets" class="songSheets"></songSheet>
 	</div>
 </template>
 
@@ -197,6 +198,7 @@
 	        activeNames: ['1'],
 	        songIndex:0,//记录当前操作歌单的下表
 	        clickList:0,//当前点击操作的歌单是我的歌单（0）还是收藏歌单（1）
+	        selectedSongSheet: {},//选中的歌单，
 	        //创建歌单
 	        songsLists:{
 	        	list:[{
@@ -273,6 +275,20 @@
 	        ]
 	      };
 	    },
+	  /*  computed:{
+	    	selectFoods() { // 循环遍历所有选中的商品
+		        let foods = [];
+		        this.goods.forEach((good) => {
+		          good.foods.forEach((food) => {
+		            if (food.count) {
+		              foods.push(food);
+		            }
+		          });
+		        });
+		        return foods;
+		      }
+		    },
+	    },*/
 	    methods: {
 	      handleChange(val) {
 	        console.log(val);
@@ -310,16 +326,19 @@
 	      	//删除歌单
 
 	      },selectFood(food, event) { // 设置选中的商品以便传递给 food组件
-	        if (!event._constructed) {
-	          return;
-	        }
-	        this.selectedFood = food;
-	        this.$refs.foods.show(); // 调用 子组件 food 的show方法
+	        /*console.log(food)*/
+	       		/*console.log(event._constructed)
+		        if (!event._constructed) {
+		          return;
+		        }*/
+		        this.selectedSongSheet = food;
+		        //this.$refs.ref.method
+		        this.$refs.songSheets.show(); // 调用 子组件 food 的show方法
       	},
-	    addFood(target) { // 监听到的组件的事件回调
-	        this._drop(target);
-	    }
 	      
+	    },
+	    components:{
+	    	songSheet: songSheet // 注册food组件
 	    }
 	  }
 </script>
@@ -421,7 +440,7 @@
     	position: absolute;
     	top: 0;
     	right: 0;
-    	width: 40px;
+    	width: 42px;
     }
     .operation>span{
     	display: inline-block;
@@ -447,7 +466,7 @@
 	   	padding: 0 12px;
    }
    .el-drawer__body{
-	    height: 40px;
+	 /*   height: 40px;*/
 	    line-height: 40px;
    }
 </style>

@@ -1,49 +1,142 @@
 <template>
-	<div>
-		<el-row class="songSheetTop" :gutter="24">
-			<el-col class="" :span="12">
-				<span>
-					
-				</span>
-				<span>
-					歌单
-				</span>
-			</el-col>
-			<el-col :span="12">
-				<span>
-					<i class="el-icon-search">
-						
-					</i>
-				</span>
-				<span>
-					:
-				</span>
-			</el-col>
-		</el-row>
+	<div v-if="isShowSong" ref="songSheet">
+		<div class="songSheetTop">
+			<el-row  :gutter="24">
+				<el-col class="" :span="12">
+					<span @click="isShowSong=false">
+						<!--退出-->
+						<i class="el-icon-back infoIcon"></i>
+					</span>
+					<span>
+						歌单
+					</span>
+				</el-col>
+				<el-col :span="12" class="songOperate">
+					<span>
+						<i class="el-icon-search infoIcon"></i>
+					</span>
+					<span class="infoIcon">
+						:
+					</span>
+				</el-col>
+			</el-row>
+		</div>
 		<!--歌单信息部分-->
-		<el-row :gutter="24">
-			<el-col :span="10">
-				<img src="#" alt="歌单图片" />
-			</el-col>
-			<el-col :span="14">
-				<!--歌单名称-->
-				<p>歌单名称111</p>
-				<!--歌单创造者-->
-				<p>
-					<img src="#" alt="" />
-					<span>作者名称</span>
-				</p>
-				<!--编辑信息-->
-				<span>
-					编辑信息>
-				</span>
-			</el-col>
-		</el-row>
+		<div class="songInfoMoudel">
+			<el-row :gutter="24" class="songSheetInfo">
+				<el-col :span="10" class="songImg">
+					<img :src="songSheet.img" alt="歌单图片" />
+				</el-col>
+				<el-col :span="14" class="sheetInfo">
+					<!--歌单名称-->
+					<p class="sheetName">{{songSheet.name}}</p>
+					<!--歌单创造者-->
+					<p class="author">
+						<img :src="songSheet.img" alt="" />
+						<span>作者名称&gt;</span>
+					</p>
+					<!--编辑信息-->
+					<span class="editer">
+						编辑信息&gt;
+					</span>
+				</el-col>
+			</el-row>
+			<el-row class="operateBtns" :gutter="24">
+				<el-col :span="6">
+					<i class="el-icon-chat-dot-round"></i>
+					<p>评论</p>
+				</el-col>
+				<el-col :span="6">
+					<i class="el-icon-share"></i>
+					<p>分享</p>
+				</el-col>
+				<el-col :span="6">
+					<i class="el-icon-download"></i>
+					<p>下载</p>
+				</el-col>
+				<el-col :span="6">
+					<i class="el-icon-folder-add"></i>
+					<p>多选</p>
+				</el-col>
+			</el-row>
+		</div>
+		<div class="songsList">
+			<div class="song">
+				<el-row :gutter="24">
+					<el-col :span="2">
+						<i class="el-icon-video-play"></i>
+					</el-col>
+					<el-col :span="22">
+						<span>播放全部（共19首）</span>
+					</el-col>
+				</el-row>
+			</div>
+			<div v-for="(item,index) in songsList" :key="index" class="song" @click="play()">
+				<el-row :gutter="24">
+					<el-col :span="2" class="text-center">
+						{{index}}
+					</el-col>
+					<el-col :span="20">
+						<span>{{item.name}}</span>
+						<span>{{item.author}}</span>
+					</el-col>
+					<el-col :span="2" class="text-center">
+						<span>:</span>
+					</el-col>
+				</el-row>
+			</div>
+		</div>
+		<play ref="palySong"></play>
 	</div>
 </template>
 
 <script>
+	/*获取演唱页面的组件*/
+	import play from "../playSong/play"
+	export default{
+		data(){
+			return {
+				isShowSong:false,
+				songsList:[{
+					id:0,
+					name:"歌曲1",
+					author:"小栗旬"
+				},{
+					id:1,
+					name:"两只老虎",
+					author:"二哥精选"
+				},{
+					id:2,
+					name:"小燕子",
+					author:"儿歌精选"
+				},{
+					id:3,
+					name:"送别",
+					author:"毕业精选"
+				}]
+			}
+		},
+		methods:{
+			show(){
+				console.log("进入show方法")
+				this.isShowSong=true
+			},
+			hidden(){
+				this.isShowSong=false
+			},
+			play(){
+				this.$refs.palySong.show();
+			}
+		},
+		props:{
+			songSheet:{
+				type:Object
+			}
+		},
+		components:{
+			play:play
+		}
+	}
 </script>
-
 <style>
 </style>
