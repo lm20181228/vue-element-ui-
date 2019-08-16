@@ -14,7 +14,7 @@ a{
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 2;
+	z-index: 3;
 	
 	width: 100%;
 	height: 60px;
@@ -39,9 +39,9 @@ a{
 	font-size: 26px;
 }
 .contentMain{
-	margin: 70px 0;
+	margin: 60px 0;
 	padding:0px!important;
-	background-color: #c1c1c1;
+	/*background-color: #c1c1c1;*/
 }
 .fixedFooter{
 	position: fixed;
@@ -133,8 +133,6 @@ a{
 }
 .musicModule{
 	text-align: center;
-	/*border-bottom: 1px solid red;*/
-
 }
 .moduleName{
     display: block;
@@ -148,9 +146,10 @@ a{
     top: 0px;
     left: 0;
     bottom: 60px;
+    width: 100%;
     
     z-index: 3;
-    background: #fff;
+	background: #DCDCDC;
     overflow: auto;
 }
 .songSheetTop{
@@ -162,6 +161,13 @@ a{
 	width: 100%;
 	height: 60px;
 	line-height: 60px;
+	
+}
+.sheetTopBgcolor{
+	background: rgba(250,250,250,0.6);
+}
+.shheetTopposition{
+	position: absolute;
 }
 .songOperate{
 	text-align: right;
@@ -176,7 +182,7 @@ a{
 /*歌单信息部分*/
 .songInfoMoudel{
 	padding: 60px 10px 10px;
-	background: #DCDCDC;
+
 }
 .sheetInfo>.sheetName{
 	font-size: 24px;
@@ -210,9 +216,11 @@ a{
 }
 /*歌曲列表*/
 .songsList{
+    background: #fff;
+    border-radius: 12px 12px 0 0;
 	padding: 10px;
 }
-.songsList>.song{
+.songsList .song{
 	height: 50px;
 	line-height: 50px;
 }

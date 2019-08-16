@@ -17,27 +17,48 @@
 				</el-col>
 			</el-row>
 		</el-header>
-		<el-main>
-			内容
+		<el-main class="playMain">
+			<div>
+				<!--歌曲图片-->
+				<img src="../../../static/img/my/wangyiyun.png" alt="" />
+			</div>
 		</el-main>
-		<el-footer>
+		<el-footer class="playFooter">
 			
 			<div class="">
-				<el-row type="flex" class="row-bg" justify="space-between">
+				<el-row type="flex" class="row-bg text-center songOPerate" justify="space-between">
 					<el-col :span="4">
-						收藏
+						<i class="el-icon-star-off"></i>
 					</el-col>
 					<el-col :span="4">
-						下载
+						<i class="el-icon-download"></i>
 					</el-col>
 					<el-col :span="4">
-						分享
+						<i class="el-icon-share"></i>
 					</el-col>
 					<el-col :span="4">
-						评论
+						<i class="el-icon-chat-line-round"></i>
 					</el-col>
 					<el-col :span="4">
-						详情
+						<i class="el-icon-warning-outline"></i>
+					</el-col>
+				</el-row>
+				<audio src="../../../static/songs/画.mp3" controls="controls"></audio>
+				<el-row type="flex" class="row-bg text-center songOPerate" justify="space-between">
+					<el-col :span="4">
+						<i class="el-icon-menu"></i>
+					</el-col>
+					<el-col :span="4">
+						<i class="el-icon-caret-left"></i>
+					</el-col>
+					<el-col :span="4">
+						<i class="el-icon-video-play"></i>
+					</el-col>
+					<el-col :span="4">
+						<i class="el-icon-caret-right"></i>
+					</el-col>
+					<el-col :span="4">
+						<i class="el-icon-s-unfold"></i>
 					</el-col>
 				</el-row>
 			</div>
@@ -70,21 +91,37 @@
 		left: 0;
 		width: 100%;
 		height: 100vh;
-		background: #fff;
+		
+		background: #e4e4e4;
 		z-index: 5;
+		
+	    display: flex;
+	    flex-direction: column;
+	    justify-content: space-around;
 	}
 	.palyHeader{
 		height: 60px;
 		line-height: 60px;
-		border: 1px solid red;
 	}
 	.playSongInfo{
-		line-height: 20px;
+		line-height: 28px;
 	}
 /*	.playSongInfo>.songName{
 	
 	}*/
 	.playSongInfo>.songAuthor{
 		font-size: 12px;
+	}
+	.songOPerate{
+		padding: 16px 0;
+	}
+	.playMain{
+		display: flex;
+	    flex-direction: column;
+	    align-items: center;
+	    justify-content: center;
+	}
+	.playFooter{
+		height: 168px!important;
 	}
 </style>

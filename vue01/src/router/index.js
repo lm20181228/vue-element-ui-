@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import myMusic from '@/components/my/myMusic'
-import find from '@/components/find'
+import find from '@/components/find/find'
 import '../../static/css/index.css'
 
 Vue.use(Router)

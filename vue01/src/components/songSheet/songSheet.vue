@@ -71,19 +71,21 @@
 					</el-col>
 				</el-row>
 			</div>
-			<div v-for="(item,index) in songsList" :key="index" class="song" @click="play()">
-				<el-row :gutter="24">
-					<el-col :span="2" class="text-center">
-						{{index}}
-					</el-col>
-					<el-col :span="20">
-						<span>{{item.name}}</span>
-						<span>{{item.author}}</span>
-					</el-col>
-					<el-col :span="2" class="text-center">
-						<span>:</span>
-					</el-col>
-				</el-row>
+			<div class="">				
+				<div v-for="(item,index) in songsList" :key="index" class="song" @click="play()">
+					<el-row :gutter="24">
+						<el-col :span="2" class="text-center">
+							{{index}}
+						</el-col>
+						<el-col :span="20">
+							<span>{{item.name}}</span>
+							<span>{{item.author}}</span>
+						</el-col>
+						<el-col :span="2" class="text-center">
+							<span>:</span>
+						</el-col>
+					</el-row>
+				</div>
 			</div>
 		</div>
 		<play ref="palySong"></play>
@@ -92,7 +94,8 @@
 
 <script>
 	/*获取演唱页面的组件*/
-	import play from "../playSong/play"
+	import play from "../playSong/play";
+	import $ from 'jquery';
 	export default{
 		data(){
 			return {
@@ -113,12 +116,43 @@
 					id:3,
 					name:"送别",
 					author:"毕业精选"
+				},{
+					id:4,
+					name:"歌曲1",
+					author:"小栗旬"
+				},{
+					id:5,
+					name:"两只老虎",
+					author:"二哥精选"
+				},{
+					id:6,
+					name:"小燕子",
+					author:"儿歌精选"
+				},{
+					id:7,
+					name:"送别",
+					author:"毕业精选"
+				},{
+					id:8,
+					name:"歌曲1",
+					author:"小栗旬"
+				},{
+					id:9,
+					name:"两只老虎",
+					author:"二哥精选"
+				},{
+					id:10,
+					name:"小燕子",
+					author:"儿歌精选"
+				},{
+					id:11,
+					name:"送别",
+					author:"毕业精选"
 				}]
 			}
 		},
 		methods:{
 			show(){
-				console.log("进入show方法")
 				this.isShowSong=true
 			},
 			hidden(){
@@ -137,6 +171,27 @@
 			play:play
 		}
 	}
+	function scrollTop(){
+		/*var t =document.documentElement.scrollTop||document.body.scrollTop;*/
+		var t=$(".songSheets").scrollTop();
+		var songsTop=$(".songInfoMoudel").height()+70;
+		if(t>0){
+			$(".songSheetTop").addClass("sheetTopBgcolor");
+			if(songsTop-t<=60){
+				console.log("到临界了。需要改变")
+			}
+		}else{
+			$(".songSheetTop").removeClass("sheetTopBgcolor");
+		}
+	}
+	scrollTop();
+	document.addEventListener("touchmove", function(e){
+		scrollTop();
+	}, false);
+	/*window.addEventListener("scroll",function(e){
+	
+		scrollTop();
+	});*/
 </script>
 <style>
 </style>

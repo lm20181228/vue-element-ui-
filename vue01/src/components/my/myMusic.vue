@@ -69,7 +69,7 @@
 	  						<span class="moreOperations"  @click.stop="drawer = true,clickList=1">:</span>
 	  					</div>
 	  				</div>
-	  				<div class="text songSheetPosition" v-for="(item,i) in collectionSongsLists.list">
+	  				<div class="text songSheetPosition" v-for="(item,i) in collectionSongsLists.list" @click="">
 				  		<router-link to="/localMusic">
 				  			<el-row :gutter="24">
 				  				<el-col :span="4">
@@ -102,7 +102,7 @@
 		</el-drawer>
 	  	<!--新增我的歌单弹窗E-->
 	  	<!--编辑歌单信息S-->
-		<el-drawer :title="'歌单：'+clickList==0?songsLists.list[songIndex].name:collectionSongsLists.list[songIndex].name" :visible.sync="songDrawer" :direction="direction" :show-close="showClose">
+		<el-drawer :title="clickList==0?'歌单：'+ songsLists.list[songIndex].name:'歌单：'+ collectionSongsLists.list[songIndex].name" :visible.sync="songDrawer" :direction="direction" :show-close="showClose">
 			<div>
 				<el-row :gutter="24" v-for="(item , index) in editSongsList" @click.native.stop="delSong(songIndex)">
 					<el-col :span="4"  class="text-center" v-show="!(index==2&&clickList==1)">
@@ -275,20 +275,6 @@
 	        ]
 	      };
 	    },
-	  /*  computed:{
-	    	selectFoods() { // 循环遍历所有选中的商品
-		        let foods = [];
-		        this.goods.forEach((good) => {
-		          good.foods.forEach((food) => {
-		            if (food.count) {
-		              foods.push(food);
-		            }
-		          });
-		        });
-		        return foods;
-		      }
-		    },
-	    },*/
 	    methods: {
 	      handleChange(val) {
 	        console.log(val);
@@ -318,9 +304,11 @@
 	      	this.dialogFormVisible=false;
 	      },
 	      delSong(index){
-	      	var songList="";
+	      	console.log(index)
+	      	let songList="";
 	      	this.clickList==0?songList=this.songsLists:songList=this.collectionSongsLists;
 	      	songList.list.splice(index,1);
+	      	console.log(songList.list)
 	      	songList.length--
 	      	this.songDrawer = false;
 	      	//删除歌单
@@ -375,8 +363,7 @@
 		line-height: 40px;
 		border-radius: 50%;
 		
-		/*border: 1px solid red;*/
-		background-color: #9c0b0b;
+		background-color: #db0f0f;
 		color: #fff;
 	}
 	.social li>.socialName{
