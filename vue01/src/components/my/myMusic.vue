@@ -128,7 +128,6 @@
 			  </div>
 		</el-dialog>
 		<!--新建歌单信息E-->
-		<!-- 使用food组件 ，并传入一个选中的商品 -->
 	    <!-- ref 用来调用 子组件的方法 show  -->
 	    <songSheet  :songSheet="selectedSongSheet" ref="songSheets" class="songSheets"></songSheet>
 	</div>
@@ -227,18 +226,7 @@
 	        
 	        /*收藏歌单*/
 	       	collectionSongsLists:{
-	       		list:[{
-		        	id:1,
-		        	name:"收藏歌单1",
-		        	img:"/static/img/my/wangyiyun.png",
-		        	mun:30
-		        },{
-		        	id:2,
-		        	name:"收藏歌单2",
-		        	img:"/static/img/my/wangyiyun.png",
-		        	mun:24
-		        }],
-		        length:2
+	       		
 	       	},
 	       	drawer: false,//是否显示 Drawer，支持 .sync 修饰符
         	direction: 'btt',//弹框出现方向
@@ -275,6 +263,30 @@
 	        ]
 	      };
 	    },
+	 /*   mounted:{*/
+	    	/*axios('http://loaclhost:8080/static/json/songSheet.json');*/
+	    	/*axios.get('/static/json/songSheet.json')
+			  .then(function (response) {
+			    console.log(response);
+		  	})
+		  	.catch(function (error) {
+			    console.log(error);
+		  	});*/
+		  	
+			/*axios.get('http://loaclhost:8080/static/json/songSheet.json')
+      		.then(response => (this.collectionSongsLists = response.data.collectionSongsLists))*/
+      		/*axios({
+		    	//type: 'get',     // 通过设置type，来选择是get还是post请求
+			    url: '/static/json/songSheet.json',    // 访问的后端接口地址
+			    params: {                // get请求使用params,post请求使用data(data为json格式)
+			        Num: 33,
+			    }
+			}).then(res => {
+			    console.log(res)    // 请求成功打印res
+			}).catch(err => {
+			    alert('请求错误')    // 请求错误弹出警告
+			})*/
+		/*},*/
 	    methods: {
 	      handleChange(val) {
 	        console.log(val);
@@ -322,7 +334,7 @@
 		        this.selectedSongSheet = food;
 		        //this.$refs.ref.method
 		        this.$refs.songSheets.show(); // 调用 子组件 food 的show方法
-      	},
+      		},
 	      
 	    },
 	    components:{

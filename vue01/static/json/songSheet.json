@@ -1,0 +1,46 @@
+//关于歌单信息的json数据
+{
+	"data":[
+		{
+			"songsLists":{
+	        	"list":[{
+		        	"id":0,
+		        	"name":"歌单1",
+		        	"img":"/static/img/my/wangyiyun.png",
+		        	"mun":12
+		        },{
+		        	"id":1,
+		        	"name":"歌单2",
+		        	"img":"/static/img/my/wangyiyun.png",
+		        	"mun":3
+		        },{
+		        	"id":2,
+		        	"name":"歌单3",
+		        	"img":"/static/img/my/wangyiyun.png",
+		        	"mun":5
+		        },{
+		        	"id":3,
+		        	"name":"歌单4",
+		        	"img":"/static/img/my/wangyiyun.png",
+		        	"mun":0
+		        }],
+	        	"length":4
+	        },
+	        "collectionSongsLists":{
+	       		"list":[{
+		        	"id":1,
+		        	"name":"收藏歌单1",
+		        	"img":"/static/img/my/wangyiyun.png",
+		        	"mun":30
+		        },{
+		        	"id":2,
+		        	"name":"收藏歌单2",
+		        	"img":"/static/img/my/wangyiyun.png",
+		        	"mun":24
+		        }],
+		        "length":2
+	       	}
+		}
+		
+	]
+}

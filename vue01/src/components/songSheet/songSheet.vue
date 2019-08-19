@@ -72,14 +72,14 @@
 				</el-row>
 			</div>
 			<div class="">				
-				<div v-for="(item,index) in songsList" :key="index" class="song" @click="play()">
+				<div v-for="(item,index) in songsList" :key="index" class="song" @click="play(item)" >
 					<el-row :gutter="24">
 						<el-col :span="2" class="text-center">
 							{{index}}
 						</el-col>
-						<el-col :span="20">
-							<span>{{item.name}}</span>
-							<span>{{item.author}}</span>
+						<el-col :span="20" class="songInfoCol">
+							<span class="songName">{{item.name}}</span>
+							<span class="songAuthor">{{item.author}}</span>
 						</el-col>
 						<el-col :span="2" class="text-center">
 							<span>:</span>
@@ -88,7 +88,7 @@
 				</div>
 			</div>
 		</div>
-		<play ref="palySong"></play>
+		<play ref="palySong" :songInfo="palySongInfo"></play>
 	</div>
 </template>
 
@@ -103,52 +103,85 @@
 				songsList:[{
 					id:0,
 					name:"歌曲1",
-					author:"小栗旬"
+					author:"小栗旬",
+					audioUrl:"../../../static/songs/画.mp3",
+					songImg:"../../../static/img/wangyiyun.png",
 				},{
 					id:1,
 					name:"两只老虎",
-					author:"二哥精选"
+					author:"二哥精选",
+					audioUrl:"../../../static/songs/无名之辈.mp3",
+					songImg:"../../../static/img/bgPic.jpg"
 				},{
 					id:2,
 					name:"小燕子",
-					author:"儿歌精选"
+					author:"儿歌精选",
+					audioUrl:"../../../static/songs/画.mp3",
+					songImg:"../../../static/img/wangyiyun.png"
 				},{
 					id:3,
 					name:"送别",
-					author:"毕业精选"
+					author:"毕业精选",
+					audioUrl:"../../../static/songs/无名之辈.mp3",
+					songImg:"../../../static/img/bgPic.jpg"
+					
 				},{
 					id:4,
 					name:"歌曲1",
-					author:"小栗旬"
+					author:"小栗旬",
+					audioUrl:"../../../static/songs/画.mp3",
+					songImg:"../../../static/img/wangyiyun.png"
+					
 				},{
 					id:5,
 					name:"两只老虎",
-					author:"二哥精选"
+					author:"二哥精选",
+					audioUrl:"../../../static/songs/无名之辈.mp3",
+					songImg:"../../../static/img/bgPic.jpg"
+					
 				},{
 					id:6,
 					name:"小燕子",
-					author:"儿歌精选"
+					author:"儿歌精选",
+					audioUrl:"../../../static/songs/画.mp3",
+					songImg:"../../../static/img/wangyiyun.png"
+					
 				},{
 					id:7,
 					name:"送别",
-					author:"毕业精选"
+					author:"毕业精选",
+					audioUrl:"../../../static/songs/无名之辈.mp3",
+					songImg:"../../../static/img/bgPic.jpg"
+					
 				},{
 					id:8,
 					name:"歌曲1",
-					author:"小栗旬"
+					author:"小栗旬",
+					audioUrl:"../../../static/songs/画.mp3",
+					songImg:"../../../static/img/wangyiyun.png"
+					
 				},{
 					id:9,
 					name:"两只老虎",
-					author:"二哥精选"
+					author:"二哥精选",
+					audioUrl:"../../../static/songs/无名之辈.mp3",
+					songImg:"../../../static/img/bgPic.jpg"
+					
 				},{
 					id:10,
 					name:"小燕子",
-					author:"儿歌精选"
+					author:"儿歌精选",
+					audioUrl:"../../../static/songs/画.mp3",
+					songImg:"../../../static/img/wangyiyun.png"
+					
 				},{
 					id:11,
 					name:"送别",
-					author:"毕业精选"
-				}]
+					author:"毕业精选",
+					audioUrl:"../../../static/songs/无名之辈.mp3",
+					songImg:"../../../static/img/bgPic.jpg"
+				}],
+				palySongInfo:{}
 			}
 		},
 		methods:{
@@ -158,10 +191,13 @@
 			hidden(){
 				this.isShowSong=false
 			},
-			play(){
+			play(songInfo){
+				this.palySongInfo=songInfo;
+				
 				this.$refs.palySong.show();
 			}
 		},
+		
 		props:{
 			songSheet:{
 				type:Object
@@ -185,13 +221,31 @@
 		}
 	}
 	scrollTop();
-	document.addEventListener("touchmove", function(e){
+	$(".songSheets").on("touchmove",function(e){
 		scrollTop();
-	}, false);
+	})
+	/*document.addEventListener("touchmove", function(e){
+		scrollTop();
+	}, false);*/
 	/*window.addEventListener("scroll",function(e){
 	
 		scrollTop();
 	});*/
 </script>
 <style>
+	.songInfoCol{
+		line-height: 0;
+	}
+	.songName{
+		height: 30px;
+		line-height: 30px;
+		display: inline-block;
+    	width: 100%;
+	}
+	.songAuthor{
+		height: 20px;
+		line-height: 20px;
+		font-size: 12px;
+		color: #666;
+	}
 </style>

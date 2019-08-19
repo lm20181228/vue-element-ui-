@@ -1,5 +1,5 @@
 <template>
-	<div class="playSong" v-show="isPlay">
+	<div class="playSong" v-if="isPlay" >
 		<el-header>
 			<el-row class="palyHeader" :gutter="24">
 				<el-col class="" :span="4">
@@ -9,8 +9,8 @@
 					</span>
 				</el-col>
 				<el-col :span="16" class="playSongInfo">
-					<p class="songName">歌词名称</p>
-					<span class="songAuthor">作者&gt;</span>
+					<p class="songName">{{songInfo.name}}</p>
+					<span class="songAuthor">{{songInfo.author}}&gt;</span>
 				</el-col>
 				<el-col :span="4" class="text-right">
 					<i class="el-icon-share"></i>
@@ -20,7 +20,7 @@
 		<el-main class="playMain">
 			<div>
 				<!--歌曲图片-->
-				<img src="../../../static/img/my/wangyiyun.png" alt="" />
+				<img :src="songInfo.songImg" alt="" />
 			</div>
 		</el-main>
 		<el-footer class="playFooter">
@@ -43,7 +43,7 @@
 						<i class="el-icon-warning-outline"></i>
 					</el-col>
 				</el-row>
-				<audio src="../../../static/songs/画.mp3" controls="controls"></audio>
+				<audio :src="songInfo.audioUrl" controls="controls"></audio>
 				<el-row type="flex" class="row-bg text-center songOPerate" justify="space-between">
 					<el-col :span="4">
 						<i class="el-icon-menu"></i>
@@ -63,14 +63,18 @@
 				</el-row>
 			</div>
 		</el-footer>
+		<editSheet></editSheet>
 	</div>
 </template>
 
 <script>
+	/*获取编辑歌单信息的组件*/
+	import edit from '../songSheet/editSongSheet'
 	export default {
 		data(){
 			return{
-				isPlay:false
+				isPlay:false,
+				
 			}
 		},
 		methods:{
@@ -79,6 +83,14 @@
 			},
 			hide(){
 				this.isPlay=false;		
+			}
+		},
+		components:{
+			editSheet:edit
+		},
+		props:{
+			songInfo:{
+				type:Object
 			}
 		}
 	}
@@ -121,7 +133,15 @@
 	    align-items: center;
 	    justify-content: center;
 	}
+	.playMain>div>img{
+		width: 60vw;
+		height: 60vw;
+		border-radius: 50%;
+	}
 	.playFooter{
 		height: 168px!important;
+	}
+	audio{
+		width: 100%;
 	}
 </style>

@@ -119,13 +119,19 @@
 	 					name:"加入网易音乐人",
 	 					icon:"el-icon-headset"
 	 				}	 			
-	 			]
+	 			],
+	 			/*存放最近播放，每次提取第一位放置在固定脚部栏，原开始想用seesion，不过应该这样也可以。*/
+	 			latelyPlay:[{
+	 				
+	 			}]
+	 			
 	 		}
 	 	},
 	 	method:{
 	 		
 	 	}
 	}
+	/*需要将部分本地播放信息存放在seesion中，*/
 </script>
 
 <style>
