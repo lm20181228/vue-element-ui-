@@ -45,7 +45,7 @@
 	  					</div>
 	  				</div>
 	  				
-	  				<div class="text songSheetPosition" v-for="(item,i) in songsLists.list" :key="i"  @click="selectFood(item, $event)">
+	  				<div class="text songSheetPosition" v-for="(item,i) in songsLists.list" :key="i"  @click="clickList=0,selectSheet(item, i,$event)">
 				  		<div>
 				  			<el-row :gutter="24">
 				  				<el-col :span="4">
@@ -69,8 +69,8 @@
 	  						<span class="moreOperations"  @click.stop="drawer = true,clickList=1">:</span>
 	  					</div>
 	  				</div>
-	  				<div class="text songSheetPosition" v-for="(item,i) in collectionSongsLists.list" @click="">
-				  		<router-link to="/localMusic">
+	  				<div class="text songSheetPosition" v-for="(item,i) in collectionSongsLists.list"  @click="clickList=1,selectSheet(item, i,$event)">
+				  		<div>
 				  			<el-row :gutter="24">
 				  				<el-col :span="4">
 				  					<span class="songSheetImg"><img :src="item.img" alt="" /></span>
@@ -80,7 +80,7 @@
 				  					<p>{{item.mun}}</p>
 				  				</el-col>
 				  			</el-row>
-				  		</router-link>	
+				  		</div>	
 				  		<el-col :span="4"  class="operation">
 		  					<span @click.stop="songDrawer=true ,clickList=1, songIndex=i">:</span>
 		  				</el-col>
@@ -241,37 +241,13 @@
 	    mounted(){
 	    	let that=this;
 	    	this.$axios.get('/static/json/songSheet.json')
-				  .then(function (response) {
-				   that.collectionSongsLists=response.data.data.collectionSongsLists;
-				   that.songsLists=response.data.data.songsLists;
-			  	})
-			  	.catch(function (error) {
-				    console.log(error);
-			  	});
-	    	
-	    	/*axios('../../../static/json/songSheet.json');*/
-	    	/*axios.get('/static/json/songSheet.json')
-			  .then(function (response) {
-			    console.log(response);
-		  	}),`
+				.then(function (response) {
+				that.collectionSongsLists=response.data.data.collectionSongsLists;
+				that.songsLists=response.data.data.songsLists;
+		  	})
 		  	.catch(function (error) {
 			    console.log(error);
-		  	});*/
-		  	
-		  	
-			/*axios.get('http://loaclhost:8080/static/json/songSheet.json')
-      		.then(response => (this.collectionSongsLists = response.data.collectionSongsLists))*/
-      		/*axios({
-		    	//type: 'get',     // 通过设置type，来选择是get还是post请求
-			    url: '/static/json/songSheet.json',    // 访问的后端接口地址
-			    params: {                // get请求使用params,post请求使用data(data为json格式)
-			        Num: 33,
-			    }
-			}).then(res => {
-			    console.log(res)    // 请求成功打印res
-			}).catch(err => {
-			    alert('请求错误')    // 请求错误弹出警告
-			})*/
+		  	});
 		},
 	    methods: {
 	      handleChange(val) {
@@ -305,20 +281,19 @@
 	      	let songList="";
 	      	this.clickList==0?songList=this.songsLists:songList=this.collectionSongsLists;
 	      	songList.list.splice(index,1);
-	      	console.log(songList.list)
 	      	songList.length--
 	      	this.songDrawer = false;
 	      	//删除歌单
 
-	      },selectFood(food, event) { // 设置选中的商品以便传递给 food组件
-	        /*console.log(food)*/
+	      },selectSheet(sheet,index, event) { // 设置选中的商品以便传递给 sheet组件
 	       		/*console.log(event._constructed)
 		        if (!event._constructed) {
 		          return;
 		        }*/
-		        this.selectedSongSheet = food;
+		        this.selectedSongSheet = sheet;
 		        //this.$refs.ref.method
-		        this.$refs.songSheets.show(); // 调用 子组件 food 的show方法
+		        this.$refs.songSheets.show(); // 调用 子组件 sheet 的show方法
+		        this.$refs.songSheets.getSongs(index,this.clickList); // 调用 子组件 sheet 的getSongs方法
       		},
 	    },
 	    components:{
@@ -404,9 +379,15 @@
 	}
 	.songSheetImg{
 		width: 100%;
+		display: inline-block;
+    	line-height: 50px;
+    	height: 50px;
+    	overflow: hidden;
 	}
 	.songSheetImg>img{
 		width: 100%;
+		vertical-align: middle;
+		/*max-height: 50px;*/
 	}
 	 .collapse-title {
         flex: 1 0 90%;

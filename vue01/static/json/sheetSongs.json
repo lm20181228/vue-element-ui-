@@ -6,82 +6,82 @@
 			"id":0,
 			"name":"歌曲1",
 			"author":"小栗旬",
-			"audioUrl":"../../../static/songs/画.mp3",
-			"songImg":"../../../static/img/wangyiyun.png"
+			"audioUrl":"/static/songs/画.mp3",
+			"songImg":"/static/img/song/1.jpeg"
 		},{
 			"id":1,
 			"name":"两只老虎",
 			"author":"二哥精选",
-			"audioUrl":"../../../static/songs/无名之辈.mp3",
-			"songImg":"../../../static/img/bgPic.jpg"
+			"audioUrl":"/static/songs/无名之辈.mp3",
+			"songImg":"/static/img/song/13.jpeg"
 		},{
 			"id":2,
 			"name":"小燕子",
 			"author":"儿歌精选",
-			"audioUrl":"../../../static/songs/画.mp3",
-			"songImg":"../../../static/img/wangyiyun.png"
+			"audioUrl":"/static/songs/画.mp3",
+			"songImg":"/static/img/song/2.jpeg"
 		},{
 			"id":3,
 			"name":"送别",
 			"author":"毕业精选",
-			"audioUrl":"../../../static/songs/无名之辈.mp3",
-			"songImg":"../../../static/img/bgPic.jpg"
+			"audioUrl":"/static/songs/无名之辈.mp3",
+			"songImg":"/static/img/song/14.jpeg"
 			
 		},{
 			"id":4,
 			"name":"歌曲1",
 			"author":"小栗旬",
-			"audioUrl":"../../../static/songs/画.mp3",
-			"songImg":"../../../static/img/wangyiyun.png"
+			"audioUrl":"/static/songs/画.mp3",
+			"songImg":"/static/img/song/3.jpeg"
 			
 		},{
 			"id":5,
 			"name":"两只老虎",
 			"author":"二哥精选",
-			"audioUrl":"../../../static/songs/无名之辈.mp3",
-			"songImg":"../../../static/img/bgPic.jpg"
+			"audioUrl":"/static/songs/无名之辈.mp3",
+			"songImg":"/static/img/song/15.jpeg"
 			
 		},{
 			"id":6,
 			"name":"小燕子",
 			"author":"儿歌精选",
-			"audioUrl":"../../../static/songs/画.mp3",
-			"songImg":"../../../static/img/wangyiyun.png"
+			"audioUrl":"/static/songs/画.mp3",
+			"songImg":"/static/img/song/4.jpg"
 			
 		},{
 			"id":7,
 			"name":"送别",
 			"author":"毕业精选",
-			"audioUrl":"../../../static/songs/无名之辈.mp3",
-			"songImg":"../../../static/img/bgPic.jpg"
+			"audioUrl":"/static/songs/无名之辈.mp3",
+			"songImg":"/static/img/song/16.jpeg"
 			
 		},{
 			"id":8,
 			"name":"歌曲1",
 			"author":"小栗旬",
-			"audioUrl":"../../../static/songs/画.mp3",
-			"songImg":"../../../static/img/wangyiyun.png"
+			"audioUrl":"/static/songs/画.mp3",
+			"songImg":"/static/img/song/5.jpeg"
 			
 		},{
 			"id":9,
 			"name":"两只老虎",
 			"author":"二哥精选",
-			"audioUrl":"../../../static/songs/无名之辈.mp3",
-			"songImg":"../../../static/img/bgPic.jpg"
+			"audioUrl":"/static/songs/无名之辈.mp3",
+			"songImg":"/static/img/song/17.jpeg"
 			
 		},{
 			"id":10,
 			"name":"小燕子",
 			"author":"儿歌精选",
-			"audioUrl":"../../../static/songs/画.mp3",
-			"songImg":"../../../static/img/wangyiyun.png"
+			"audioUrl":"/static/songs/画.mp3",
+			"songImg":"/static/img/song/6.jpeg"
 			
 		},{
 			"id":11,
 			"name":"送别",
 			"author":"毕业精选",
-			"audioUrl":"../../../static/songs/无名之辈.mp3",
-			"songImg":"../../../static/img/bgPic.jpg"
+			"audioUrl":"/static/songs/无名之辈.mp3",
+			"songImg":"/static/img/song/18.jpeg"
 		}]
 	},{
 		"sheetId":1,
@@ -90,20 +90,20 @@
 			"id":0,
 			"name":"一首英文歌",
 			"author":"吱吱吱",
-			"audioUrl":"../../../static/songs/画.mp3",
-			"songImg":"../../../static/img/wangyiyun.png"
+			"audioUrl":"/static/songs/画.mp3",
+			"songImg":"/static/img/song/7.jpeg"
 		},{
 			"id":1,
 			"name":"两首快乐歌",
 			"author":"喵喵喵",
-			"audioUrl":"../../../static/songs/无名之辈.mp3",
-			"songImg":"../../../static/img/bgPic.jpg"
+			"audioUrl":"/static/songs/无名之辈.mp3",
+			"songImg":"/static/img/song/19.jpeg"
 		},{
 			"id":2,
 			"name":"啦啦啦啦",
 			"author":"哆啦A梦小天使",
-			"audioUrl":"../../../static/songs/画.mp3",
-			"songImg":"../../../static/img/wangyiyun.png"
+			"audioUrl":"/static/songs/画.mp3",
+			"songImg":"/static/img/song/8.jpeg"
 		}]
 	},{
 		"sheetId":2,
@@ -112,32 +112,32 @@
 			"id":0,
 			"name":"000000000",
 			"author":"吱吱吱",
-			"audioUrl":"../../../static/songs/画.mp3",
-			"songImg":"../../../static/img/wangyiyun.png"
+			"audioUrl":"/static/songs/画.mp3",
+			"songImg":"/static/img/song/9.jpeg"
 		},{
 			"id":1,
 			"name":"11111111111",
 			"author":"喵喵喵",
-			"audioUrl":"../../../static/songs/无名之辈.mp3",
-			"songImg":"../../../static/img/bgPic.jpg"
+			"audioUrl":"/static/songs/无名之辈.mp3",
+			"songImg":"/static/img/song/20.jpeg"
 		},{
 			"id":2,
 			"name":"222222222222",
 			"author":"哆啦A梦小天使",
-			"audioUrl":"../../../static/songs/画.mp3",
-			"songImg":"../../../static/img/wangyiyun.png"
+			"audioUrl":"/static/songs/画.mp3",
+			"songImg":"/static/img/song/10.jpeg"
 		},{
 			"id":3,
 			"name":"3333333333333333",
 			"author":"哆啦A梦小天使",
-			"audioUrl":"../../../static/songs/画.mp3",
-			"songImg":"../../../static/img/wangyiyun.png"
+			"audioUrl":"/static/songs/画.mp3",
+			"songImg":"/static/img/song/11.jpeg"
 		},{
 			"id":4,
 			"name":"444444444444444",
 			"author":"哆啦A梦小天使",
-			"audioUrl":"../../../static/songs/画.mp3",
-			"songImg":"../../../static/img/wangyiyun.png"
+			"audioUrl":"/static/songs/画.mp3",
+			"songImg":"/static/img/song/12.jpeg"
 		}]
 	},{
 		"sheetId":3,

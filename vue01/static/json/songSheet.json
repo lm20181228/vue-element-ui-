@@ -4,38 +4,60 @@
 			"songsLists":{
 	        	"list":[{
 		        	"id":0,
-		        	"name":"歌单1",
-		        	"img":"/static/img/my/wangyiyun.png",
-		        	"mun":12
+		        	"name":"早安，给清晨的第一份早餐",
+		        	"img":"/static/img/sheet/1.jpg",
+		        	"mun":12,
+		        	"author":"小二次郎",
+		        	"tag":[{
+		        		"id":0,
+		        		"title":"小清新"
+		        	},{
+		        		"id":1,
+		        		"title":"轻音乐"
+		        	},{
+		        		"id":2,
+		        		"title":"田园风"
+		        	}],
+		        	"desc":"很喜欢的音乐，早上起来听着，就感觉新的一天是美好的一天。新的一天就是最有希望的一天"
 		        },{
 		        	"id":1,
-		        	"name":"歌单2",
-		        	"img":"/static/img/my/wangyiyun.png",
-		        	"mun":3
+		        	"name":"夜生活的滋味",
+		        	"img":"/static/img/sheet/2.jpg",
+		        	"mun":3,
+		        	"author":"月月盈"
+		        	
 		        },{
 		        	"id":2,
-		        	"name":"歌单3",
-		        	"img":"/static/img/my/wangyiyun.png",
-		        	"mun":5
+		        	"name":"晨跑歌单",
+		        	"img":"/static/img/sheet/3.jpg",
+		        	"mun":5,
+		        	"author":"取个名字好难"
+		        	
 		        },{
 		        	"id":3,
-		        	"name":"歌单4",
-		        	"img":"/static/img/my/wangyiyun.png",
-		        	"mun":0
+		        	"name":"小资生活",
+		        	"img":"/static/img/sheet/4.jpg",
+		        	"mun":0,
+		        	"author":"不知道是谁不知道为什么"
+		        	
 		        }],
 	        	"length":4
 	        },
 	        "collectionSongsLists":{
 	       		"list":[{
 		        	"id":1,
-		        	"name":"收藏歌单1",
-		        	"img":"/static/img/my/wangyiyun.png",
-		        	"mun":30
+		        	"name":"礼物",
+		        	"img":"/static/img/sheet/god.jpg",
+		        	"mun":30,
+		        	"author":"爱上一匹野马"
+		        	
 		        },{
 		        	"id":2,
-		        	"name":"收藏歌单2",
-		        	"img":"/static/img/my/wangyiyun.png",
-		        	"mun":24
+		        	"name":"橙子",
+		        	"img":"/static/img/sheet/oragin.jpg",
+		        	"mun":24,
+		        	"author":"心头有个未亡人"
+		        	
 		        }],
 		        "length":2
 	       	}

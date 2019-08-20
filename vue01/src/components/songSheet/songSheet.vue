@@ -33,12 +33,18 @@
 					<!--歌单创造者-->
 					<p class="author">
 						<img :src="songSheet.img" alt="" />
-						<span>作者名称&gt;</span>
+						<span>{{songSheet.author}}&gt;</span>
 					</p>
 					<!--编辑信息-->
-					<span class="editer">
-						编辑信息&gt;
-					</span>
+					<div class="editer" @click="editFun()"> 
+						<span class="editerDesc" >
+							编辑信息
+						</span>
+						<span >
+							&gt;
+						</span>
+					</div>
+					
 				</el-col>
 			</el-row>
 			<el-row class="operateBtns" :gutter="24">
@@ -67,12 +73,12 @@
 						<i class="el-icon-video-play"></i>
 					</el-col>
 					<el-col :span="22">
-						<span>播放全部（共19首）</span>
+						<span>播放全部（共{{songsList.length}}首）</span>
 					</el-col>
 				</el-row>
 			</div>
 			<div class="">				
-				<div v-for="(item,index) in songsList" :key="index" class="song" @click="play(item)" >
+				<div v-for="(item,index) in songsList.songs" :key="index" class="song" @click="play(item)" >
 					<el-row :gutter="24">
 						<el-col :span="2" class="text-center">
 							{{index}}
@@ -88,99 +94,24 @@
 				</div>
 			</div>
 		</div>
+		<!--播放页面-->
 		<play ref="palySong" :songInfo="palySongInfo"></play>
+		<!--编辑页面-->
+		<edit ref="edit"> </edit>
 	</div>
 </template>
 
 <script>
 	/*获取演唱页面的组件*/
 	import play from "../playSong/play";
+	import edit from "../songSheet/editSongSheet";
 	import $ from 'jquery';
 	export default{
 		data(){
 			return {
 				isShowSong:false,
-				songsList:[{
-					id:0,
-					name:"歌曲1",
-					author:"小栗旬",
-					audioUrl:"../../../static/songs/画.mp3",
-					songImg:"../../../static/img/wangyiyun.png",
-				},{
-					id:1,
-					name:"两只老虎",
-					author:"二哥精选",
-					audioUrl:"../../../static/songs/无名之辈.mp3",
-					songImg:"../../../static/img/bgPic.jpg"
-				},{
-					id:2,
-					name:"小燕子",
-					author:"儿歌精选",
-					audioUrl:"../../../static/songs/画.mp3",
-					songImg:"../../../static/img/wangyiyun.png"
-				},{
-					id:3,
-					name:"送别",
-					author:"毕业精选",
-					audioUrl:"../../../static/songs/无名之辈.mp3",
-					songImg:"../../../static/img/bgPic.jpg"
-					
-				},{
-					id:4,
-					name:"歌曲1",
-					author:"小栗旬",
-					audioUrl:"../../../static/songs/画.mp3",
-					songImg:"../../../static/img/wangyiyun.png"
-					
-				},{
-					id:5,
-					name:"两只老虎",
-					author:"二哥精选",
-					audioUrl:"../../../static/songs/无名之辈.mp3",
-					songImg:"../../../static/img/bgPic.jpg"
-					
-				},{
-					id:6,
-					name:"小燕子",
-					author:"儿歌精选",
-					audioUrl:"../../../static/songs/画.mp3",
-					songImg:"../../../static/img/wangyiyun.png"
-					
-				},{
-					id:7,
-					name:"送别",
-					author:"毕业精选",
-					audioUrl:"../../../static/songs/无名之辈.mp3",
-					songImg:"../../../static/img/bgPic.jpg"
-					
-				},{
-					id:8,
-					name:"歌曲1",
-					author:"小栗旬",
-					audioUrl:"../../../static/songs/画.mp3",
-					songImg:"../../../static/img/wangyiyun.png"
-					
-				},{
-					id:9,
-					name:"两只老虎",
-					author:"二哥精选",
-					audioUrl:"../../../static/songs/无名之辈.mp3",
-					songImg:"../../../static/img/bgPic.jpg"
-					
-				},{
-					id:10,
-					name:"小燕子",
-					author:"儿歌精选",
-					audioUrl:"../../../static/songs/画.mp3",
-					songImg:"../../../static/img/wangyiyun.png"
-					
-				},{
-					id:11,
-					name:"送别",
-					author:"毕业精选",
-					audioUrl:"../../../static/songs/无名之辈.mp3",
-					songImg:"../../../static/img/bgPic.jpg"
-				}],
+				songsList:{},//获取歌单里面的歌曲列表信息
+				songSheet:{},//获取歌单的基本信息，不包含歌单歌曲
 				palySongInfo:{}
 			}
 		},
@@ -195,16 +126,37 @@
 				this.palySongInfo=songInfo;
 				
 				this.$refs.palySong.show();
+			},
+			getSongs(index,clickList){
+				/*获取歌单播放信息*/
+				this.$axios.get("../../../static/json/sheetSongs.json")
+				.then((response)=>{
+					this.songsList=response.data.data[index];
+				})
+				/*获取歌单基本信息。不包含歌单里面的歌曲*/
+				this.$axios.get("../../../static/json/songSheet.json")
+				.then((response)=>{
+					let songList={};
+					songList=(clickList==0?response.data.data.songsLists.list[index]:response.data.data.collectionSongsLists.list[index]);
+					this.songSheet=songList;
+				})
+			},
+			editFun(){
+				/*编辑*/
+				this.$refs.edit.show();
 			}
 		},
-		
-		props:{
+/*		mounted(){
+			
+		},*/
+	/*	props:{
 			songSheet:{
 				type:Object
 			}
-		},
+		},*/
 		components:{
-			play:play
+			play:play,
+			edit:edit
 		}
 	}
 	function scrollTop(){
