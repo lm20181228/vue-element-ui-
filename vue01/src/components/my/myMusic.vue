@@ -199,35 +199,10 @@
 	        clickList:0,//当前点击操作的歌单是我的歌单（0）还是收藏歌单（1）
 	        selectedSongSheet: {},//选中的歌单，
 	        //创建歌单
-	        songsLists:{
-	        	list:[{
-		        	id:0,
-		        	name:"歌单1",
-		        	img:"/static/img/my/wangyiyun.png",
-		        	mun:12
-		        },{
-		        	id:1,
-		        	name:"歌单2",
-		        	img:"/static/img/my/wangyiyun.png",
-		        	mun:1
-		        },{
-		        	id:2,
-		        	name:"歌单3",
-		        	img:"/static/img/my/wangyiyun.png",
-		        	mun:30
-		        },{
-		        	id:3,
-		        	name:"歌单4",
-		        	img:"/static/img/my/wangyiyun.png",
-		        	mun:24
-		        }],
-	        	length:4
-	        },
+	        songsLists:{},
 	        
 	        /*收藏歌单*/
-	       	collectionSongsLists:{
-	       		
-	       	},
+	       	collectionSongsLists:{},
 	       	drawer: false,//是否显示 Drawer，支持 .sync 修饰符
         	direction: 'btt',//弹框出现方向
         	showClose:false,//弹框关闭按钮是否存在
@@ -263,15 +238,26 @@
 	        ]
 	      };
 	    },
-	 /*   mounted:{*/
-	    	/*axios('http://loaclhost:8080/static/json/songSheet.json');*/
+	    mounted(){
+	    	let that=this;
+	    	this.$axios.get('/static/json/songSheet.json')
+				  .then(function (response) {
+				   that.collectionSongsLists=response.data.data.collectionSongsLists;
+				   that.songsLists=response.data.data.songsLists;
+			  	})
+			  	.catch(function (error) {
+				    console.log(error);
+			  	});
+	    	
+	    	/*axios('../../../static/json/songSheet.json');*/
 	    	/*axios.get('/static/json/songSheet.json')
 			  .then(function (response) {
 			    console.log(response);
-		  	})
+		  	}),`
 		  	.catch(function (error) {
 			    console.log(error);
 		  	});*/
+		  	
 		  	
 			/*axios.get('http://loaclhost:8080/static/json/songSheet.json')
       		.then(response => (this.collectionSongsLists = response.data.collectionSongsLists))*/
@@ -286,7 +272,7 @@
 			}).catch(err => {
 			    alert('请求错误')    // 请求错误弹出警告
 			})*/
-		/*},*/
+		},
 	    methods: {
 	      handleChange(val) {
 	        console.log(val);
@@ -316,7 +302,6 @@
 	      	this.dialogFormVisible=false;
 	      },
 	      delSong(index){
-	      	console.log(index)
 	      	let songList="";
 	      	this.clickList==0?songList=this.songsLists:songList=this.collectionSongsLists;
 	      	songList.list.splice(index,1);
@@ -335,7 +320,6 @@
 		        //this.$refs.ref.method
 		        this.$refs.songSheets.show(); // 调用 子组件 food 的show方法
       		},
-	      
 	    },
 	    components:{
 	    	songSheet: songSheet // 注册food组件

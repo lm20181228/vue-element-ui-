@@ -1,7 +1,6 @@
-//关于歌单信息的json数据
+
 {
-	"data":[
-		{
+	"data":{
 			"songsLists":{
 	        	"list":[{
 		        	"id":0,
@@ -41,6 +40,4 @@
 		        "length":2
 	       	}
 		}
-		
-	]
 }
