@@ -38,7 +38,7 @@
 					<!--编辑信息-->
 					<div class="editer" @click="editFun()"> 
 						<span class="editerDesc" >
-							编辑信息
+							{{songSheet.desc||"编辑信息"}}
 						</span>
 						<span >
 							&gt;
@@ -112,7 +112,8 @@
 				isShowSong:false,
 				songsList:{},//获取歌单里面的歌曲列表信息
 				songSheet:{},//获取歌单的基本信息，不包含歌单歌曲
-				palySongInfo:{}
+				palySongInfo:{},
+				sheetIndex:{}
 			}
 		},
 		methods:{
@@ -128,6 +129,9 @@
 				this.$refs.palySong.show();
 			},
 			getSongs(index,clickList){
+				/*保存歌曲信息*/
+				this.sheetIndex.index=index;
+				this.sheetIndex.type=clickList;
 				/*获取歌单播放信息*/
 				this.$axios.get("../../../static/json/sheetSongs.json")
 				.then((response)=>{
@@ -143,7 +147,7 @@
 			},
 			editFun(){
 				/*编辑*/
-				this.$refs.edit.show();
+				this.$refs.edit.show(this.sheetIndex);
 			}
 		},
 /*		mounted(){
@@ -200,4 +204,72 @@
 		font-size: 12px;
 		color: #666;
 	}
+	/*歌单信息部分*/
+.songInfoMoudel{
+	padding: 60px 10px 10px;
+	height: 200px;
+}
+.sheetInfo>.sheetName{
+	font-size: 24px;
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.author>img{
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+.author>span{
+	white-space:nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-size: 14px ;
+}
+.editer{
+	position: absolute;
+	bottom: 20px;
+	font-size: 12px;
+    width: 50%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.editerDesc{
+	display: inline-block;
+	max-width: 80%;
+	
+   /* display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: sub;
+    font-size: 12px;
+}
+.songImg{
+	height: 140px;
+	line-height: 140px;
+}
+.songImg img{
+	width: 100%;
+	max-height: 100%;
+	vertical-align: middle;
+}
+.operateBtns{
+	text-align: center;
+	padding: 8px 0;
+}
+/*歌曲列表*/
+.songsList{
+    background: #fff;
+    border-radius: 12px 12px 0 0;
+	padding: 10px;
+	min-height: calc(100vh - 350px);
+}
+.songsList .song{
+	height: 50px;
+	line-height: 50px;
+}
 </style>
