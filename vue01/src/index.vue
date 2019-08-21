@@ -90,6 +90,36 @@
 </template>
 
 <script>
+	/*保存cookie 模拟用户登录*/
+	function setCookie(cname,cvalue,exdays){
+	    var d = new Date();
+	    d.setTime(d.getTime()+(exdays*24*60*60*1000));
+	    var expires = "expires="+d.toGMTString();
+	    document.cookie = cname+"="+cvalue+"; "+expires;
+	}
+	function getCookie(cname){
+	    var name = cname + "=";
+	    var ca = document.cookie.split(';');
+	    for(var i=0; i<ca.length; i++) {
+	        var c = ca[i].trim();
+	        if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+	    }
+	    return "";
+	}
+	function checkCookie(){
+	    var user=getCookie("username");
+	    if (user!=""){
+	        alert("欢迎 " + user + " 再次访问");
+	    }
+	    else {
+	        user = prompt("请输入你的名字:","");
+	          if (user!="" && user!=null){
+	            setCookie("username",user,30);
+	        }
+	    }
+	}
+	//初步保存一个cookie值。模拟缓存的用户信息
+	setCookie("userId",0);
 	/*头部栏的选中状态应该由最外部的页面控制*/
  	/*播放按钮的状态应该由最外部的页面控制，将状态由父级传递给子页面*/
 	export default{
@@ -126,6 +156,15 @@
 	 			}]
 	 			
 	 		}
+	 	},
+	 	mounted(){
+	 		let userId=getCookie("userId");
+	 		this.$axios.get("/static/json/user.json")
+	 		.then((response)=>{
+	 			/*console.log(JSON.parse(response.data))*/
+	 			/*let jsonData=JSON.parse(response.data);
+	 			console.log(jsonData)*/
+	 		})
 	 	},
 	 	method:{
 	 		

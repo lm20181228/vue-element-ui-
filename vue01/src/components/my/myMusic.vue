@@ -134,8 +134,8 @@
 </template>
 
 <script>
-	 import songSheet from '../songSheet/songSheet';
-	 export default {
+	import songSheet from '../songSheet/songSheet';
+	export default {
 	    data() {
 	      return {
 	      	//社交推荐
