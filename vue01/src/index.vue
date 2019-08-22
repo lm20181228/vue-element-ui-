@@ -57,9 +57,9 @@
 			<el-container class="userInfo">
 				<el-header class="userHeader">
 					<!--头像-->
-					<img src="../static/img/bgPic.jpg" class="userPortrai" alt="" />
+					<img :src="user.headPortrait" class="userPortrai" alt="" />
 					<!--用户姓名-->
-					<p class="userName">用户姓名</p>
+					<p class="userName">{{user.name}}</p>
 					<!--等级-->
 				</el-header>
 				<el-main class="userMain">
@@ -106,7 +106,7 @@
 	    }
 	    return "";
 	}
-	function checkCookie(){
+/*	function checkCookie(){
 	    var user=getCookie("username");
 	    if (user!=""){
 	        alert("欢迎 " + user + " 再次访问");
@@ -117,7 +117,7 @@
 	            setCookie("username",user,30);
 	        }
 	    }
-	}
+	}*/
 	//初步保存一个cookie值。模拟缓存的用户信息
 	setCookie("userId",0);
 	/*头部栏的选中状态应该由最外部的页面控制*/
@@ -127,6 +127,7 @@
 	 		return{
 	 			userInfoDrawer:false,
 	 			showClose:false,
+	 			user:{},
 	 			userMoudel:[
 	 				{
 	 					id:0,
@@ -163,7 +164,9 @@
 	 		.then((response)=>{
 	 			/*console.log(JSON.parse(response.data))*/
 	 			/*let jsonData=JSON.parse(response.data);
-	 			console.log(jsonData)*/
+	 			*/
+	 			
+	 			this.user=response.data.user[userId]
 	 		})
 	 	},
 	 	method:{

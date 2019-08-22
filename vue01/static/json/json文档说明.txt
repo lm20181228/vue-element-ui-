@@ -1,0 +1,18 @@
+需要注意的是在json文件中不允许使用注释  // 或者/**/。会影响json的格式。
+
+user.json 用户信息数据
+/*
+ 
+ * id 用户id
+ * headPortrait 用户头像
+ * bGpic 用户背景图片
+ * name 用户名
+ * sex 用户性别
+ * level 用户等级
+ * birthday 用户生日
+ * region 所属地区
+ * sign 签名
+ * university 大学
+ * concern 关注的人
+ * fans 粉丝*/
+

@@ -1,22 +1,7 @@
-/*
- 
- * id 用户id
- * headPortrait 用户头像
- * bGpic 用户背景图片
- * name 用户名
- * sex 用户性别
- * level 用户等级
- * birthday 用户生日
- * region 所属地区
- * sign 签名
- * university 大学
- * concern 关注的人
- * fans 粉丝*/
-
 {
 	"user":[{
 		"id":0,
-		"headPortrait":"/static/suthor/head/0.jpg",
+		"headPortrait":"/static/img/author/head/0.jpg",
 		"bGPic":"",
 		"name":"小二次郎",
 		"sex":"男",
@@ -26,19 +11,16 @@
 		"sign":"余生请多指教",
 		"university":"四川工业大学",
 		"concern":{
-			//"length":5,
-			//list 感觉可以直接存一个对方用户的id，然后到时候再从用户列表里面查找
 			"list":[1,2,5]
 		},
 		"fans":{
-			//"length":2,
-			//list 感觉可以直接存一个对方用户的id，然后到时候再从用户列表里面查找
+			
 			"list":[1,2]
 		}
 		
 	},{
 		"id":1,
-		"headPortrait":"/static/suthor/head/1.jpg",
+		"headPortrait":"/static/img/author/head/1.jpg",
 		"bGPic":"",
 		"name":"月月盈",
 		"sex":"女",
@@ -48,19 +30,17 @@
 		"sign":"123123就是",
 		"university":"山东挖掘机大学",
 		"concern":{
-			"length":5,
-			//list 感觉可以直接存一个对方用户的id，然后到时候再从用户列表里面查找
+			
 			"list":[0]
 		},
 		"fans":{
-			"length":2,
-			//list 感觉可以直接存一个对方用户的id，然后到时候再从用户列表里面查找
+			
 			"list":[0,2,5]
 		}
 		
 	},{
 		"id":2,
-		"headPortrait":"/static/suthor/head/1.jpg",
+		"headPortrait":"/static/img/author/head/1.jpg",
 		"bGPic":"",
 		"name":"取个名字好难",
 		"sex":"女",
@@ -70,19 +50,17 @@
 		"sign":"长沙来了就走不脱",
 		"university":"北京政法大学",
 		"concern":{
-			"length":5,
-			//list 感觉可以直接存一个对方用户的id，然后到时候再从用户列表里面查找
+			
 			"list":[1,2]
 		},
 		"fans":{
-			"length":2,
-			//list 感觉可以直接存一个对方用户的id，然后到时候再从用户列表里面查找
+			
 			"list":[0,2,5]
 		}
 		
 	},{
 		"id":3,
-		"headPortrait":"/static/suthor/head/1.jpg",
+		"headPortrait":"/static/img/author/head/1.jpg",
 		"bGPic":"",
 		"name":"不知道是谁不知道为什么",
 		"sex":"男",
@@ -92,19 +70,17 @@
 		"sign":"长沙来了就走不脱",
 		"university":"北京政法大学",
 		"concern":{
-			"length":5,
-			//list 感觉可以直接存一个对方用户的id，然后到时候再从用户列表里面查找
+			
 			"list":[1,2]
 		},
 		"fans":{
-			"length":2,
-			//list 感觉可以直接存一个对方用户的id，然后到时候再从用户列表里面查找
+		
 			"list":[2,5]
 		}
 		
 	},{
 		"id":4,
-		"headPortrait":"/static/suthor/head/1.jpg",
+		"headPortrait":"/static/img/author/head/1.jpg",
 		"bGPic":"",
 		"name":"爱上一匹野马",
 		"sex":"男",
@@ -115,14 +91,13 @@
 		"university":"",
 		"concern":{},
 		"fans":{
-			"length":2,
-			//list 感觉可以直接存一个对方用户的id，然后到时候再从用户列表里面查找
+			
 			"list":[2,5]
 		}
 		
 	},{
 		"id":5,
-		"headPortrait":"/static/suthor/head/1.jpg",
+		"headPortrait":"/static/img/author/head/1.jpg",
 		"bGPic":"",
 		"name":"心头有个未亡人",
 		"sex":"女",
@@ -133,7 +108,5 @@
 		"university":"",
 		"concern":{},
 		"fans":{}
-		
 	}]
-
 }

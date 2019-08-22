@@ -31,10 +31,13 @@
 					<!--歌单名称-->
 					<p class="sheetName">{{songSheet.name}}</p>
 					<!--歌单创造者-->
-					<p class="author">
-						<img :src="songSheet.img" alt="" />
-						<span>{{songSheet.author}}&gt;</span>
-					</p>
+					<router-link to="/editUser">
+						<p class="author" @click="sheetAuthor()">
+							<img :src="songSheet.img" alt="" />
+							<span>{{songSheet.author}}&gt;</span>
+						</p>
+					</router-link>
+					
 					<!--编辑信息-->
 					<div class="editer" @click="editFun()"> 
 						<span class="editerDesc" >
@@ -148,6 +151,9 @@
 			editFun(){
 				/*编辑*/
 				this.$refs.edit.show(this.sheetIndex);
+			},
+			sheetAuthor(){
+				/*歌单创建者信息*/
 			}
 		},
 /*		mounted(){
