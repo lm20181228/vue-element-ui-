@@ -20,7 +20,7 @@
 				</el-col>
 				<el-col :span="18" class="sheetImg text-right">
 					<span>
-						<img :src="sheetInfo.img" alt="" />
+						<img :src="user.headPortrait" alt="" />
 					</span>
 					<input type="file"  class="updataImg" placeholder="请选择文件"/>
 				</el-col>
@@ -31,7 +31,7 @@
 				</el-col>
 				<el-col :span="18" class="sheetImg text-right">
 					<span>
-						<img :src="sheetInfo.img" alt="" />
+						<img :src="user.bGpic" alt="" />
 					</span>
 					<input type="file"  class="updataImg" placeholder="请选择文件"/>
 				</el-col>
@@ -41,7 +41,7 @@
 					昵称
 				</el-col>
 				<el-col :span="18" class="sheetName text-right" >
-					<span>{{sheetInfo.name}}</span>
+					<span>{{user.name}}</span>
 				</el-col>
 			</el-row>
 			<el-row class="editContentHeight border-bottom">
@@ -62,7 +62,7 @@
 					生日
 				</el-col>
 				<el-col :span="18" class="sheetName text-right" >
-					<span>{{sheetInfo.name}}</span>
+					<span>{{user.birthday}}</span>
 				</el-col>
 			</el-row>
 			<el-row class="editContentHeight border-bottom" @click.native.stop="editSheetName = true">
@@ -70,7 +70,7 @@
 					地区
 				</el-col>
 				<el-col :span="18" class="sheetName text-right" >
-					<span>{{sheetInfo.name}}</span>
+					<span>{{user.region}}</span>
 				</el-col>
 			</el-row>
 			<el-row class="editContentHeight border-bottom" @click.native.stop="editSheetName = true">
@@ -78,7 +78,7 @@
 					大学
 				</el-col>
 				<el-col :span="18" class="sheetName text-right" >
-					<span>{{sheetInfo.name}}</span>
+					<span>{{user.university}}</span>
 				</el-col>
 			</el-row>
 			<el-row class="editContentHeight">
@@ -86,13 +86,13 @@
 					签名
 				</el-col>
 				<el-col :span="18" class="sheetDesc text-right" @click.native.stop="editSheetDesc=true">
-					<span>{{sheetInfo.name}}</span>
+					<span>{{user.sign}}</span>
 				</el-col>
 			</el-row>
 		</div>
 	</div>
 </template>
-
+<script src="/static/js/cookie.js"></script>
 <script>
 	export default{
 		data(){
@@ -100,17 +100,17 @@
 				isEdit:false,
 				editSheetName:false,
 				editSheetDesc:false,
-				sheetInfo:{}
+				user:{}
 			}
 		},
 		methods:{
-			show(sheetIndex){
+			/*show(sheetIndex){
 				this.isEdit=true;
 				this.$axios.get("/static/json/user.json")
 				.then((response)=>{
 					this.sheetInfo=response.data.user[sheetIndex.index];
 				})
-			},
+			},*/
 			hide(){
 				this.isEdit=false;
 			},
@@ -131,9 +131,19 @@
 			submitDesc(){
 				this.editSheetDesc=false
 			}
+		},mounted(){
+			let userId=getCookie("userId");
+	 		this.$axios.get("/static/json/user.json")
+	 		.then((response)=>{
+	 			this.user=response.data.user[userId];
+	 			console.log(this.user);
+	 		})
 		}
 	}
 </script>
 
 <style>
+	.contentMain{
+		margin: 0!important;
+	}
 </style>
