@@ -1,6 +1,6 @@
 <template>
 	<!--编辑用户信息-->
-	<div>
+	<div class="editUser">
 		<el-row :gutter="24" class="title">
 			<el-col :span="3" class="text-center">
 				<router-link to="/myMusic">
@@ -18,7 +18,7 @@
 				<el-col :span="6">
 					头像
 				</el-col>
-				<el-col :span="18" class="sheetImg text-right">
+				<el-col :span="18" class="editImg text-right">
 					<span>
 						<img :src="user.headPortrait" alt="" />
 					</span>
@@ -29,18 +29,18 @@
 				<el-col :span="6">
 					个人主页背景
 				</el-col>
-				<el-col :span="18" class="sheetImg text-right">
+				<el-col :span="18" class="editImg text-right">
 					<span>
-						<img :src="user.bGpic" alt="" />
+						<img :src="user.bGPic" alt="" />
 					</span>
 					<input type="file"  class="updataImg" placeholder="请选择文件"/>
 				</el-col>
 			</el-row>
-			<el-row class="editContentHeight border-bottom" @click.native.stop="editSheetName = true">
+			<el-row class="editContentHeight border-bottom" @click.native.stop="editBgcolorName = true">
 				<el-col :span="6">
 					昵称
 				</el-col>
-				<el-col :span="18" class="sheetName text-right" >
+				<el-col :span="18" class="editName text-right" >
 					<span>{{user.name}}</span>
 				</el-col>
 			</el-row>
@@ -49,6 +49,7 @@
 					性别
 				</el-col>
 				<el-col :span="18" class="sheetTag text-right">
+					<span>{{user.sex}}</span>
 					<!--<div v-if="sheetInfo.tag">
 					  <span v-for="item in sheetInfo.tag" class="tagTitle">
 					  		{{item.title}}
@@ -57,27 +58,27 @@
 					<span v-else class="placeholderColor">请输入歌单标签</span>-->
 				</el-col>
 			</el-row>
-			<el-row class="editContentHeight border-bottom" @click.native.stop="editSheetName = true">
+			<el-row class="editContentHeight border-bottom" @click.native.stop="editBgcolorName = true">
 				<el-col :span="6">
 					生日
 				</el-col>
-				<el-col :span="18" class="sheetName text-right" >
+				<el-col :span="18" class="editName text-right" >
 					<span>{{user.birthday}}</span>
 				</el-col>
 			</el-row>
-			<el-row class="editContentHeight border-bottom" @click.native.stop="editSheetName = true">
+			<el-row class="editContentHeight border-bottom" @click.native.stop="editBgcolorName = true">
 				<el-col :span="6">
 					地区
 				</el-col>
-				<el-col :span="18" class="sheetName text-right" >
+				<el-col :span="18" class="editName text-right" >
 					<span>{{user.region}}</span>
 				</el-col>
 			</el-row>
-			<el-row class="editContentHeight border-bottom" @click.native.stop="editSheetName = true">
+			<el-row class="editContentHeight border-bottom" @click.native.stop="editBgcolorName = true">
 				<el-col :span="6">
 					大学
 				</el-col>
-				<el-col :span="18" class="sheetName text-right" >
+				<el-col :span="18" class="editName text-right" >
 					<span>{{user.university}}</span>
 				</el-col>
 			</el-row>
@@ -85,21 +86,24 @@
 				<el-col :span="6">
 					签名
 				</el-col>
-				<el-col :span="18" class="sheetDesc text-right" @click.native.stop="editSheetDesc=true">
+				<el-col :span="18" class="editDesc text-right" @click.native.stop="editBgcolorDesc=true">
 					<span>{{user.sign}}</span>
 				</el-col>
 			</el-row>
 		</div>
 	</div>
 </template>
-<script src="/static/js/cookie.js"></script>
+
+
 <script>
+	let cookie = require("../../../static/js/cookie.js");
+	
 	export default{
 		data(){
 			return {
 				isEdit:false,
-				editSheetName:false,
-				editSheetDesc:false,
+				editBgcolorName:false,
+				editBgcolorDesc:false,
 				user:{}
 			}
 		},
@@ -116,34 +120,39 @@
 			},
 			editName(){
 				console.log("asfasfasf");
-				/*this.editSheetName=true;*/
+				/*this.editBgcolorName=true;*/
 			},
 			cancelName(){
-				this.editSheetName=false
+				this.editBgcolorName=false
 			},
 			submitName(){
-				this.editSheetName=false
+				this.editBgcolorName=false
 			},
 			cancelDesc(){
-				this.editSheetDesc=false
+				this.editBgcolorDesc=false
 				
 			},
 			submitDesc(){
-				this.editSheetDesc=false
+				this.editBgcolorDesc=false
 			}
 		},mounted(){
-			let userId=getCookie("userId");
+			let userId=cookie.cookie.getCookie("userId");
 	 		this.$axios.get("/static/json/user.json")
 	 		.then((response)=>{
 	 			this.user=response.data.user[userId];
-	 			console.log(this.user);
 	 		})
 		}
 	}
 </script>
 
-<style>
-	.contentMain{
-		margin: 0!important;
+<style >
+	.editUser{
+		position: fixed;
+	    top: 0;
+	    margin: 0!important;
+	    left: 0;
+	    width: 100vw;
+	    overflow: auto;
+	    height: 100%;
 	}
 </style>

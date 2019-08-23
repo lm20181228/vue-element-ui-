@@ -1,5 +1,5 @@
 <template>
-	<div class="findMoudel">
+	<div class="findMoudel marginTB60">
 	  	<el-carousel :interval="4000" type="card" trigger="click" height="100px" class="bgWhite">
 		    <el-carousel-item v-for="(item,i) in banners"  class="carouselBanner" :key="i">
 		      <!--<h3 class="medium">{{ item }}</h3>-->

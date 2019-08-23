@@ -16,3 +16,17 @@ user.json 用户信息数据
  * concern 关注的人
  * fans 粉丝*/
 
+sheetSongs.json
+/*
+ *歌单信息--歌曲列表(包含歌单)
+ *sheetId 歌单Id
+ *length 歌单歌曲数量
+ *songs 歌单歌曲列表详情*/
+
+songSheet.json
+/*
+ 
+ *歌单信息(不包含歌曲信息)
+ *songsLists 用户创建的歌单信息
+ *collectionSongsLists 收藏的歌单信息
+ *list 对应包含的歌单列表信息*/

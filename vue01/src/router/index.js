@@ -3,7 +3,8 @@ import Router from 'vue-router'
 
 import myMusic from '@/components/my/myMusic'
 import find from '@/components/find/find'
-import sheetAuthor from '@/components/user/editUser'
+import editUser from '@/components/user/editUser'
+import user from '@/components/user/user'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import '../../static/css/index.css'
@@ -24,7 +25,6 @@ export default new Router({
 	            footer: Footer
 			}
 			
-			
 		},{
 			path:"/find",
 			name:"推荐",
@@ -34,9 +34,14 @@ export default new Router({
 	            footer: Footer
 			}
 		},{
+			path:"/user",
+			name:"个人信息",
+			component:user
+		}
+		,{
 			path:"/editUser",
 			name:"编辑个人信息",
-			component:sheetAuthor
+			component:editUser
 		}
 	]
 })

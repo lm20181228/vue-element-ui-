@@ -1,5 +1,5 @@
 <template>
-	<div class="partFixed editSheet" v-if="isEdit">
+	<div class="partFixed editBgcolor" v-if="isEdit">
 		<!--头部栏-->
 		<el-row :gutter="24" class="title">
 			<el-col :span="3" class="text-center">
@@ -15,18 +15,18 @@
 				<el-col :span="6">
 					更改封面
 				</el-col>
-				<el-col :span="18" class="sheetImg text-right">
+				<el-col :span="18" class="editImg text-right">
 					<span>
 						<img :src="sheetInfo.img" alt="" />
 					</span>
 					<input type="file"  class="updataImg" placeholder="请选择文件"/>
 				</el-col>
 			</el-row>
-			<el-row class="editContentHeight border-bottom" @click.native.stop="editSheetName = true">
+			<el-row class="editContentHeight border-bottom" @click.native.stop="editBgcolorName = true">
 				<el-col :span="6">
 					名称
 				</el-col>
-				<el-col :span="18" class="sheetName text-right" >
+				<el-col :span="18" class="editName text-right" >
 					<span>{{sheetInfo.name}}</span>
 				</el-col>
 			</el-row>
@@ -34,7 +34,7 @@
 				<el-col :span="6">
 					标签
 				</el-col>
-				<el-col :span="18" class="sheetTag text-right">
+				<el-col :span="18" class="editTag text-right">
 					<div v-if="sheetInfo.tag">
 					  <span v-for="item in sheetInfo.tag" class="tagTitle">
 					  		{{item.title}}
@@ -47,7 +47,7 @@
 				<el-col :span="6">
 					描述
 				</el-col>
-				<el-col :span="18" class="sheetDesc text-right" @click.native.stop="editSheetDesc=true">
+				<el-col :span="18" class="editDesc text-right" @click.native.stop="editBgcolorDesc=true">
 					<p v-if="sheetInfo.desc" class="descInfo">
 						{{sheetInfo.desc}}
 					</p>
@@ -56,7 +56,7 @@
 			</el-row>
 		</div>
 		<!--修改歌单名称S-->
-		<el-dialog title="修改歌单名称" :visible.sync="editSheetName"  :modal-append-to-body=false>
+		<el-dialog title="修改歌单名称" :visible.sync="editBgcolorName"  :modal-append-to-body=false>
 			  <el-form >
 			    <el-input v-model="sheetInfo.name" autocomplete="off" ></el-input>
 			  </el-form>
@@ -68,7 +68,7 @@
 		</el-dialog>
 		<!--修改歌单名称E-->
 		<!--修改歌单描述S-->
-		<el-dialog title="修改歌单描述" :visible.sync="editSheetDesc"  :modal-append-to-body=false>
+		<el-dialog title="修改歌单描述" :visible.sync="editBgcolorDesc"  :modal-append-to-body=false>
 			  <el-form >
 			    <el-input type="textarea" v-model="sheetInfo.desc"></el-input>
 			  </el-form>
@@ -88,8 +88,8 @@
 		data(){
 			return {
 				isEdit:false,
-				editSheetName:false,
-				editSheetDesc:false,
+				editBgcolorName:false,
+				editBgcolorDesc:false,
 				sheetInfo:{}
 			}
 		},
@@ -106,7 +106,7 @@
 			},
 			editName(){
 				console.log("asfasfasf");
-				/*this.editSheetName=true;*/
+				/*this.editBgcolorName=true;*/
 			},
 			cancelName(){
 				this.editSheetName=false
@@ -119,7 +119,7 @@
 				
 			},
 			submitDesc(){
-				this.editSheetDesc=false
+				this.editBgcolorDesc=false
 			}
 		}
 	}
@@ -130,7 +130,7 @@
 		font-size: 16px;
 		color: #949494;
 	}
-	.editSheet{
+	.editBgcolor{
 		background: #ececec;
 	}
 	.border-bottom{
@@ -152,7 +152,7 @@
 		background: #fff;
 		height: calc(100vh - 90px);
 	}
-	.sheetName{
+	.editName{
 	    white-space: nowrap;
 	    overflow: hidden;
 	    text-overflow: ellipsis;
@@ -169,7 +169,7 @@
 	    left: 0;
 	    opacity: 0;
 	}
-	.sheetImg img{
+	.editImg img{
 		width: 80px;
 		max-height: 70px;
 		vertical-align: middle;
@@ -177,7 +177,7 @@
 	.descInfo {
 		line-height: 24px;
 	}
-	.sheetDesc>p{
+	.editDesc>p{
 		font-size: 14px;
 		/*line-height: 24px;*/
 	}

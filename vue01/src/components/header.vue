@@ -23,11 +23,13 @@
 		<el-drawer direction="ltr" :visible.sync='userInfoDrawer' class="leftCon" :show-close="showClose" size="80%">
 			<el-container class="userInfo">
 				<el-header class="userHeader">
-					<!--头像-->
-					<img :src="user.headPortrait" class="userPortrai" alt="" />
-					<!--用户姓名-->
-					<p class="userName">{{user.name}}</p>
-					<!--等级-->
+					<router-link to="/user">
+						<!--头像-->
+						<img :src="user.headPortrait" class="userPortrai" alt="" />
+						<!--用户姓名-->
+						<p class="userName">{{user.name}}</p>
+						<!--等级-->
+					</router-link>
 				</el-header>
 				<el-main class="userMain">
 					<div class="musicModule">

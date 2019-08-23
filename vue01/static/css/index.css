@@ -61,9 +61,12 @@ a{
 	font-size: 26px;
 }
 .contentMain{
-	margin: 60px 0;
+	/*margin: 60px 0;*/
 	padding:0px!important;
 	/*background-color: #c1c1c1;*/
+}
+.marginTB60{
+	margin: 60px 0;
 }
 .fixedFooter{
 	position: fixed;

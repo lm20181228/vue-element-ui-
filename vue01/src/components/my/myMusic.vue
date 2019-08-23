@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="marginTB60">
 		<!--社交推荐部分 S-->
 	  	<div class="socialDiv">
 	  		<ul class="social" id="social">
