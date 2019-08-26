@@ -4,9 +4,12 @@ import Router from 'vue-router'
 import myMusic from '@/components/my/myMusic'
 import find from '@/components/find/find'
 import editUser from '@/components/user/editUser'
-import user from '@/components/user/user'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
+import user from '@/components/user/user'
+import userSong from '@/components/user/userSongs'
+import dynamic from '@/components/user/dynamic'
+import about from '@/components/user/about'
 import '../../static/css/index.css'
 
 Vue.use(Router)
@@ -34,9 +37,25 @@ export default new Router({
 	            footer: Footer
 			}
 		},{
-			path:"/user",
+			path:"/user/",
 			name:"个人信息",
-			component:user
+			components:{
+	            default: user, //默认省略不写name的情况
+	            footer: Footer
+			},
+			children:[
+				{
+					path:'userSongs',
+					component:userSong
+				},{
+					path:'dynamic',
+					component:dynamic
+				},{
+					path:'about',
+					component:about
+				}
+				
+				]
 		}
 		,{
 			path:"/editUser",

@@ -2,7 +2,7 @@
 	"user":[{
 		"id":0,
 		"headPortrait":"/static/img/author/head/0.jpg",
-		"bGPic":"/static/img/author/head/0.jpg",
+		"bGPic":"/static/img/author/bgPic/350.jpg",
 		"name":"小二次郎",
 		"sex":"男",
 		"level":"5",
@@ -21,7 +21,7 @@
 	},{
 		"id":1,
 		"headPortrait":"/static/img/author/head/1.jpg",
-		"bGPic":"/static/img/author/head/0.jpg",
+		"bGPic":"/static/img/author/bgPic/351.jpg",
 		"name":"月月盈",
 		"sex":"女",
 		"level":"6",
@@ -41,7 +41,7 @@
 	},{
 		"id":2,
 		"headPortrait":"/static/img/author/head/1.jpg",
-		"bGPic":"/static/img/author/head/0.jpg",
+		"bGPic":"/static/img/author/bgPic/352.jpg",
 		"name":"取个名字好难",
 		"sex":"女",
 		"level":"1",
@@ -61,7 +61,7 @@
 	},{
 		"id":3,
 		"headPortrait":"/static/img/author/head/1.jpg",
-		"bGPic":"",
+		"bGPic":"/static/img/author/bgPic/353.jpg",
 		"name":"不知道是谁不知道为什么",
 		"sex":"男",
 		"level":"2",
@@ -81,7 +81,7 @@
 	},{
 		"id":4,
 		"headPortrait":"/static/img/author/head/1.jpg",
-		"bGPic":"",
+		"bGPic":"/static/img/author/bgPic/354.jpg",
 		"name":"爱上一匹野马",
 		"sex":"男",
 		"level":"5",
@@ -98,7 +98,7 @@
 	},{
 		"id":5,
 		"headPortrait":"/static/img/author/head/1.jpg",
-		"bGPic":"",
+		"bGPic":"/static/img/author/bgPic/355.jpg",
 		"name":"心头有个未亡人",
 		"sex":"女",
 		"level":"12",
