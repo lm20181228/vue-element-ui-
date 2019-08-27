@@ -3,7 +3,9 @@
 	<div class="usermodule">
 		<el-row :gutter="24" class="top"> 
 			<el-col :span="12">
-				<i class="el-icon-back"></i>
+				<router-link to="/myMusic">
+					<i class="el-icon-back"></i>
+				</router-link>
 			</el-col>
 			<el-col :span="12" class="text-right">
 				<i class="el-icon-share"></i>
@@ -19,10 +21,12 @@
 						</span>
 					</el-col>
 					<el-col :span="12" class="text-right">
-						<span class="editButton">
-					    	<i class="el-icon-edit"></i>	
-						    编辑
-						</span>
+						<router-link to="/user/editUser">
+							<span class="editButton">
+						    	<i class="el-icon-edit"></i>	
+							    编辑
+							</span>
+						</router-link>
 					</el-col>
 				</el-row>
 				<div class="userInfo">
@@ -61,7 +65,7 @@
 				</div>
 			</div>
 			<!--用户列表数据-->
-			<div>
+			<div class="personCenter">
 				<router-view></router-view>
 			</div>
 		</div>
@@ -110,7 +114,7 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		z-index: 5;
+		z-index: 2;
 		/*background: rgba(250,250,250,0.5);*/
 		height: 50px;
 		width: 100%;
@@ -197,5 +201,11 @@
 	.userPartsTitle>span{
 		font-size: 0.8rem;
 		text-align: center;
+	}
+	/*用户个人中心模块*/
+	.personCenter{
+		max-height:calc(100vh - 180px);
+		overflow: auto; 
+		padding-bottom: 60px;
 	}
 </style>

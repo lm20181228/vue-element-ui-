@@ -45,22 +45,28 @@ export default new Router({
 			},
 			children:[
 				{
+					path:'',
+					component:userSong
+				},
+				{
 					path:'userSongs',
+					name:"个人中心-歌单列表",
 					component:userSong
 				},{
 					path:'dynamic',
+					name:"个人中心-动态",
 					component:dynamic
 				},{
 					path:'about',
+					name:"个人中心-关于我",
 					component:about
+				},{
+					path:"editUser",
+					name:"编辑个人信息",
+					component:editUser
 				}
-				
-				]
-		}
-		,{
-			path:"/editUser",
-			name:"编辑个人信息",
-			component:editUser
+						
+			]
 		}
 	]
 })

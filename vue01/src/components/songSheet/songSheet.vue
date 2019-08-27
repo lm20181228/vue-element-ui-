@@ -31,7 +31,7 @@
 					<!--歌单名称-->
 					<p class="sheetName">{{songSheet.name}}</p>
 					<!--歌单创造者-->
-					<router-link to="/editUser">
+					<router-link to="/user/editUser">
 						<p class="author" @click="sheetAuthor()">
 							<img :src="songSheet.img" alt="" />
 							<span>{{songSheet.author}}&gt;</span>
