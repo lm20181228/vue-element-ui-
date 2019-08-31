@@ -12,15 +12,18 @@
 			</el-row>
 			<!--内容分割-->
 			<div class="sheetList">
-				<el-row :gutter="24" class="sheet" v-for="(item) in mySheet.list">
-					<el-col :span="4" class="sheetImg">
-						<img :src="item.img" alt="" />
-					</el-col>
-					<el-col :span="20" class="sheetInfo"> 
-						<p class="sheetName">{{item.name}}</p>
-						<p class="sheetPlayTime">{{item.mun}}首，播放502次</p>
-					</el-col>
-				</el-row>
+				<div v-for="(item,i) in mySheet.list" @click="clickList=0,selectSheet(item, i,$event)">	
+					<el-row :gutter="24" class="sheet" >
+						<el-col :span="4" class="sheetImg" >
+							<img :src="item.img" alt="" />
+						</el-col>
+						<el-col :span="20" class="sheetInfo" > 
+							<p class="sheetName" >{{item.name+i}}</p>
+							<p class="sheetPlayTime">{{item.mun}}首，播放502次</p>
+						</el-col>
+					</el-row>
+				</div>
+				
 			</div>
 			
 		</div>
@@ -32,27 +35,45 @@
 			</el-row>
 			<!--内容分割-->
 			<div class="sheetList">
-				<el-row :gutter="24" class="sheet" v-for="(item) in colSheet.list">
-					<el-col :span="4" class="sheetImg">
-						<img :src="item.img" alt="" />
-					</el-col>
-					<el-col :span="20" class="sheetInfo"> 
-						<p class="sheetName">{{item.name}}</p>
-						<p class="sheetPlayTime">{{item.mun}}首，by{{item.author}}，播放502次</p>
-					</el-col>
-				</el-row>
+				<div v-for="(item,i) in colSheet.list" @click="clickList=1,selectSheet(item, i,$event)">
+					<el-row :gutter="24" class="sheet" >
+						<el-col :span="4" class="sheetImg">
+							<img :src="item.img" alt="" />
+						</el-col>
+						<el-col :span="20" class="sheetInfo"> 
+							<p class="sheetName">{{item.name}}</p>
+							<p class="sheetPlayTime">{{item.mun}}首，by{{item.author}}，播放502次</p>
+						</el-col>
+					</el-row>
+				</div>
 			</div>
 		</div>
+		<songSheet  :songSheet="selectedSongSheet" ref="songSheets" class="songSheets"></songSheet>
 	</div>
 </template>
 
 <script>
+	import songSheet from '../songSheet/songSheet';
 	export default{
 		data(){
 			return{
 				mySheet:{},
-				colSheet:{}
+				colSheet:{},
+				clickList:0,
+			 	selectedSongSheet: {},//选中的歌单，
 			}
+		},
+		methods:{
+			selectSheet(sheet,index, event) { // 设置选中的商品以便传递给 sheet组件
+	       		/*console.log(event._constructed)
+		        if (!event._constructed) {
+		          return;
+		        }*/
+		        this.selectedSongSheet = sheet;
+		        //this.$refs.ref.method
+		        this.$refs.songSheets.show(); // 调用 子组件 sheet 的show方法
+		        this.$refs.songSheets.getSongs(index,this.clickList); // 调用 子组件 sheet 的getSongs方法
+      		},
 		},
 		mounted(){
 			this.$axios.get("/static/json/songSheet.json")
@@ -60,12 +81,11 @@
 				let sheet=res.data.data;
 				this.mySheet=sheet.songsLists;
 				this.colSheet=sheet.collectionSongsLists;
-				console.log(this.mySheet)
 			})
 		},
-		method:{
-			
-		}
+		components:{
+	    	songSheet: songSheet // 注册food组件
+	    }
 	}
 </script>
 
