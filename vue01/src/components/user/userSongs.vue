@@ -100,6 +100,9 @@
 		/*border: 1px solid red;*/
 		margin: 10px 0!important;
 	}
+	.sheetInfo>.sheetName{
+		font-size: 16px;
+	}
 	.sheetInfo{
 		/*border: 1px solid red;*/
 	}

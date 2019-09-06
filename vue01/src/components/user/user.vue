@@ -103,7 +103,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.usermodule{
 		
 		margin: 0;
