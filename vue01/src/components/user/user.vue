@@ -86,7 +86,7 @@
 		},
 		mounted(){
 			let userId=cookie.cookie.getCookie("userId");
-			this.$axios.get("/static/json/user.json")
+			this.$axios.get("./static/json/user.json")
 			.then((responent)=>{
 				this.userInfo=responent.data.user[userId];
 				$(".userContentTop").css({

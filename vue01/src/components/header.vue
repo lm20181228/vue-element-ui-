@@ -103,7 +103,7 @@
 	 	mounted(){
 	 		let userId=cookie.cookie.getCookie("userId");
 	 		/*let userId=0;*/
-	 		this.$axios.get("/static/json/user.json")
+	 		this.$axios.get("./static/json/user.json")
 	 		.then((response)=>{
 	 			/*console.log(JSON.parse(response.data))*/
 	 			/*let jsonData=JSON.parse(response.data);

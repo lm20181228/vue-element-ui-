@@ -240,7 +240,7 @@
 	    },
 	    mounted(){
 	    	let that=this;
-	    	this.$axios.get('/static/json/songSheet.json')
+	    	this.$axios.get('./static/json/songSheet.json')
 				.then(function (response) {
 				that.collectionSongsLists=response.data.data.collectionSongsLists;
 				that.songsLists=response.data.data.songsLists;

@@ -2,14 +2,14 @@
 	<el-footer class="fixedFooter fixedPosistion">
 		<el-row :gutter="24">
 			<el-col :span="4" class="song_portrait">
-				<img src="/static/img/my/wangyiyun.png" alt="歌曲头像" />
+				<img src="../../static/img/my/wangyiyun.png" alt="歌曲头像" />
 			</el-col>
 			<el-col :span="14" class="footer_songInfo">
 				<p class="song_name">《逆风》--广播剧《破云》主题曲</p>
 				<p>Mario</p>
 				<!--controls 是否展示播放按键-->
 				<audio controls="controls"  autoplay="autoplay">
-					<source src="song.mp3" type="audio/mpeg">
+					<source src="../../static/songs/无名之辈.mp3" type="audio/mpeg">
 					Your browser does not support the audio tag.
 				</audio>
 			</el-col>

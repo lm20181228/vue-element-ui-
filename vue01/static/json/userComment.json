@@ -3,7 +3,7 @@
 		"id":0,
 		"target":{
 			"name":"单曲1",
-			"img":"/static/img/song/13.jpeg",
+			"img":"./static/img/song/13.jpeg",
 			"type":"sigle",
 			"author":"小时姑娘",
 			"id":0,
@@ -18,7 +18,7 @@
 		"id":1,
 		"target":{
 			"name":"单曲2",
-			"img":"/static/img/song/1.jpeg",
+			"img":"./static/img/song/1.jpeg",
 			"type":"sigle",
 			"author":"无名歌手",
 			"id":1,
@@ -33,7 +33,7 @@
 		"id":2,
 		"target":{
 			"name":"单曲3",
-			"img":"/static/img/song/3.jpeg",
+			"img":"./static/img/song/3.jpeg",
 			"type":"sigle",
 			"author":"蒙面唱将",
 			"id":2,

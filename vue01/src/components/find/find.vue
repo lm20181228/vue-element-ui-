@@ -76,84 +76,84 @@
 			return {
 				banners:[{
 					id:0,
-					imgUrl:"../../../static/img/find/findBg1.jpg",
+					imgUrl:"./static/img/find/findBg1.jpg",
 					title:"第一张图"
 				},{
 					id:1,
-					imgUrl:"../../../static/img/find/findBg2.jpg",
+					imgUrl:"./static/img/find/findBg2.jpg",
 					title:"第二张图"
 				},{
 					id:2,
-					imgUrl:"../../../static/img/find/findBg3.jpg",
+					imgUrl:"./static/img/find/findBg3.jpg",
 					title:"第三张图"
 				},{
 					id:3,
-					imgUrl:"../../../static/img/find/findBg4.jpg",
+					imgUrl:"./static/img/find/findBg4.jpg",
 					title:"第四张图"
 				},{
 					id:4,
-					imgUrl:"../../../static/img/find/findBg5.jpg",
+					imgUrl:"./static/img/find/findBg5.jpg",
 					title:"第五张图"
 				},{
 					id:5,
-					imgUrl:"../../../static/img/find/findBg6.jpg",
+					imgUrl:"./static/img/find/findBg6.jpg",
 					title:"第六张图"
 				}],
 				recommendSong:[{
 					id:0,
-					imgUrl:"../../../static/img/find/findBg1.jpg",
+					imgUrl:"./static/img/find/findBg1.jpg",
 					name:"一周新歌推荐"
 				},{
 					id:1,
-					imgUrl:"../../../static/img/find/findBg2.jpg",
+					imgUrl:"./static/img/find/findBg2.jpg",
 					name:"我们说过要一起守护内心的小孩"
 				},{
 					id:2,
-					imgUrl:"../../../static/img/find/findBg3.jpg",
+					imgUrl:"./static/img/find/findBg3.jpg",
 					name:"民谣"
 				},{
 					id:3,
-					imgUrl:"../../../static/img/find/findBg4.jpg",
+					imgUrl:"./static/img/find/findBg4.jpg",
 					name:"古风歌曲"
 				},{
 					id:4,
-					imgUrl:"../../../static/img/find/findBg5.jpg",
+					imgUrl:"./static/img/find/findBg5.jpg",
 					name:"江湖热血"
 				},{
 					id:5,
-					imgUrl:"../../../static/img/find/findBg6.jpg",
+					imgUrl:"./static/img/find/findBg6.jpg",
 					name:"外国歌曲精选"
 				},{
 					id:5,
-					imgUrl:"../../../static/img/find/findBg6.jpg",
+					imgUrl:"./static/img/find/findBg6.jpg",
 					name:"国语精选"
 				}],
 				newDish:[{
 					id:0,
-					imgUrl:"../../../static/img/find/findBg1.jpg",
+					imgUrl:"./static/img/find/findBg1.jpg",
 					name:"新专辑"
 				},{
 					id:1,
-					imgUrl:"../../../static/img/find/findBg2.jpg",
+					imgUrl:"./static/img/find/findBg2.jpg",
 					name:"新专辑"
 				},{
 					id:2,
-					imgUrl:"../../../static/img/find/findBg3.jpg",
+					imgUrl:"./static/img/find/findBg3.jpg",
 					name:"新专辑"
 				}],
 				officialSelection:[{
 					id:0,
-					imgUrl:"../../../static/img/find/findBg1.jpg",
+					imgUrl:"./static/img/find/findBg1.jpg",
 					name:"带你感受‘巅峰时刻’！",
 					title:"全职高手之巅峰荣耀 电影原声大碟"
 				},{
 					id:1,
-					imgUrl:"../../../static/img/find/findBg2.jpg",
+					imgUrl:"./static/img/find/findBg2.jpg",
 					name:"村名们都在关注#科幻",
 					title:"科幻大片的好推荐"
 				},{
 					id:2,
-					imgUrl:"../../../static/img/find/findBg3.jpg",
+					imgUrl:"./static/img/find/findBg3.jpg",
 					name:"是哪吒，还是乾坤圈",
 					title:"心中永远的小英雄"
 				}]

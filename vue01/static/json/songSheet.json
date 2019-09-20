@@ -5,7 +5,7 @@
 	        	"list":[{
 		        	"id":0,
 		        	"name":"早安，给清晨的第一份早餐",
-		        	"img":"/static/img/sheet/1.jpg",
+		        	"img":"./static/img/sheet/1.jpg",
 		        	"mun":12,
 		        	"author":"小二次郎",
 		        	"authorId":0,
@@ -23,7 +23,7 @@
 		        },{
 		        	"id":1,
 		        	"name":"夜生活的滋味",
-		        	"img":"/static/img/sheet/2.jpg",
+		        	"img":"./static/img/sheet/2.jpg",
 		        	"mun":3,
 		        	"author":"月月盈",
 		        	"authorId":1
@@ -31,7 +31,7 @@
 		        },{
 		        	"id":2,
 		        	"name":"晨跑歌单",
-		        	"img":"/static/img/sheet/3.jpg",
+		        	"img":"./static/img/sheet/3.jpg",
 		        	"mun":5,
 		        	"author":"取个名字好难",
 		        	"authorId":2
@@ -39,7 +39,7 @@
 		        },{
 		        	"id":3,
 		        	"name":"小资生活",
-		        	"img":"/static/img/sheet/4.jpg",
+		        	"img":"./static/img/sheet/4.jpg",
 		        	"mun":0,
 		        	"author":"不知道是谁不知道为什么",
 		        	"authorId":3
@@ -50,14 +50,14 @@
 	       		"list":[{
 		        	"id":1,
 		        	"name":"礼物",
-		        	"img":"/static/img/sheet/god.jpg",
+		        	"img":"./static/img/sheet/god.jpg",
 		        	"mun":30,
 		        	"author":"爱上一匹野马",
 		        	"authorId":4
 		        },{
 		        	"id":2,
 		        	"name":"橙子",
-		        	"img":"/static/img/sheet/oragin.jpg",
+		        	"img":"./static/img/sheet/oragin.jpg",
 		        	"mun":24,
 		        	"author":"心头有个未亡人",
 		        	"authorId":5
