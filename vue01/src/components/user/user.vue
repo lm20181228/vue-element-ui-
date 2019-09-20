@@ -17,7 +17,7 @@
 					<!--头像-->
 					<el-col :span="12">
 						<span class="userHeadP">
-							<img src="/static/img/author/head/1.jpg" alt="" />
+							<img :src="userInfo.headPortrait" alt="" />
 						</span>
 					</el-col>
 					<el-col :span="12" class="text-right">

@@ -96,7 +96,7 @@
 		methods:{
 			show(sheetIndex){
 				this.isEdit=true;
-				this.$axios.get("/static/json/songSheet.json")
+				this.$axios.get("./static/json/songSheet.json")
 				.then((response)=>{
 					this.sheetInfo=response.data.data.songsLists.list[sheetIndex.index];
 				})
@@ -125,7 +125,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.placeholderColor{
 		font-size: 16px;
 		color: #949494;

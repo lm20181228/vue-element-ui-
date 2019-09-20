@@ -137,7 +137,7 @@
 			}
 		},mounted(){
 			let userId=cookie.cookie.getCookie("userId");
-	 		this.$axios.get("/static/json/user.json")
+	 		this.$axios.get("./static/json/user.json")
 	 		.then((response)=>{
 	 			this.user=response.data.user[userId];
 	 		})
@@ -145,7 +145,10 @@
 	}
 </script>
 
-<style >
+<style scoped>
+	*{
+		font-size: 14px;
+	}
 	.editUser{
 		position: fixed;
 	    top: 0;
@@ -154,5 +157,73 @@
 	    width: 100vw;
 	    overflow: auto;
 	    height: 100%;
+	    z-index: 2;
+	}
+	.placeholderColor{
+		font-size: 16px;
+		color: #949494;
+	}
+	.editBgcolor{
+		background: #ececec;
+	}
+	.border-bottom{
+		border-bottom: 1px solid #ececec;
+	}
+	.title{
+		height: 60px;
+		line-height: 60px;
+		background: #fff;
+	}
+	.coverImg{
+		position: relative;
+		height: 80px;
+		line-height: 80px;
+	}
+	.editContent{
+		padding: 10px;
+		/*padding-bottom: 60px;*/
+		/*margin-top: 10px;*/
+		background: #fff;
+		height: calc(100vh - 140px);
+		overflow: auto;
+	}
+	.editName{
+	    white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	}
+	.editContentHeight{
+		min-height: 50px;
+		line-height: 50px;
+	}
+	.updataImg{
+	    width: 100%;
+	    height: 100%;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    opacity: 0;
+	}
+	.editImg img{
+		width: 80px;
+		max-height: 70px;
+		vertical-align: middle;
+	}
+	.descInfo {
+		line-height: 24px;
+	}
+	.editDesc>p{
+		font-size: 14px;
+		/*line-height: 24px;*/
+	}
+	.tagTitle{
+		font-size: 14px;
+	    display: inline-block;
+	    border: 1px solid #d6d4d4;
+	    height: 26px;
+	    line-height: 26px;
+	    padding: 0 4px;
+	    border-radius: 10px;
+	    margin:0 4px ;
 	}
 </style>

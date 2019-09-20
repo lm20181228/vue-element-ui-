@@ -36,7 +36,7 @@
 			
 		},
 		mounted(){
-			this.$axios.get("/static/json/userGynamic.json")
+			this.$axios.get("./static/json/userGynamic.json")
 			.then((res)=>{
 				console.log(res.data);
 				this.shareComment=res.data;

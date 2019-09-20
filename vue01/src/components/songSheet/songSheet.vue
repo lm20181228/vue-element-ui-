@@ -136,12 +136,12 @@
 				this.sheetIndex.index=index;
 				this.sheetIndex.type=clickList;
 				/*获取歌单播放信息*/
-				this.$axios.get("../../../static/json/sheetSongs.json")
+				this.$axios.get("./static/json/sheetSongs.json")
 				.then((response)=>{
 					this.songsList=response.data.data[index];
 				})
 				/*获取歌单基本信息。不包含歌单里面的歌曲*/
-				this.$axios.get("../../../static/json/songSheet.json")
+				this.$axios.get("./static/json/songSheet.json")
 				.then((response)=>{
 					let songList={};
 					songList=(clickList==0?response.data.data.songsLists.list[index]:response.data.data.collectionSongsLists.list[index]);

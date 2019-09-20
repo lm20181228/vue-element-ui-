@@ -76,7 +76,7 @@
       		},
 		},
 		mounted(){
-			this.$axios.get("/static/json/songSheet.json")
+			this.$axios.get("./static/json/songSheet.json")
 			.then((res)=>{
 				let sheet=res.data.data;
 				this.mySheet=sheet.songsLists;
