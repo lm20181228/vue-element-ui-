@@ -33,7 +33,7 @@
 					<!--用户名称-->
 					<p class="userName">{{userInfo.name}}</p>
 					<!--人气-->
-					<p class="userContact"><span>关注 {{userInfo.concern}}</span> | <span>粉丝{{userInfo.fans}}</span></p>
+					<p class="userContact"><span >关注 {{userInfo.concern&&userInfo.concern.length||0}}</span> | <span>粉丝{{userInfo.fans&&userInfo.fans.length||0}}</span></p>
 					<!--标签-->
 					<p class="userTags">
 						<span :class="userInfo.sex=='女'?'girl':'boy'">{{userInfo.sex}} 95后</span>
@@ -89,13 +89,16 @@
 			this.$axios.get("./static/json/user.json")
 			.then((responent)=>{
 				this.userInfo=responent.data.user[userId];
+			})
+		},
+		watch:{
+			userInfo(value){
 				$(".userContentTop").css({
-					backgroundImage:"url('"+this.userInfo.bGPic+"') ",
+					backgroundImage:"url('"+value.bGPic+"') ",
 					backgroundSize:"100% 100%",
 					backgroundRepeat:"no-repeat"
 				});
-			})
-			
+			}
 		},
 		methods:{
 			
@@ -124,7 +127,7 @@
 		height: 50vh;
 		padding-top: 50px;
 		position: relative;
-		
+		/*background: #675353;*//*默认背景颜色*/
 	}
 	.userHead{
 		height: 17vh;

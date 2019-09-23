@@ -11,11 +11,12 @@
 		"sign":"余生请多指教",
 		"university":"四川工业大学",
 		"concern":{
-			"list":[1,2,5]
+			"list":[1,2,5],
+			"length":3
 		},
 		"fans":{
-			
-			"list":[1,2]
+			"list":[1,2],
+			"length":2
 		}
 		
 	},{
@@ -27,14 +28,14 @@
 		"level":"6",
 		"birthday":"1993-12-23",
 		"region":"广州下塘",
-		"sign":"123123就是",
+		"sign":"我就是人见人爱，花见花开，美丽无敌，青春靓仔小月儿",
 		"university":"山东挖掘机大学",
 		"concern":{
-			
+			"length":1,
 			"list":[0]
 		},
 		"fans":{
-			
+			"length":3,
 			"list":[0,2,5]
 		}
 		
@@ -50,12 +51,12 @@
 		"sign":"长沙来了就走不脱",
 		"university":"北京政法大学",
 		"concern":{
-			
-			"list":[1,2]
+			"list":[1,2],
+			"length":2
 		},
 		"fans":{
-			
-			"list":[0,2,5]
+			"list":[0,2,5],
+			"length":3
 		}
 		
 	},{
@@ -70,12 +71,12 @@
 		"sign":"长沙来了就走不脱",
 		"university":"北京政法大学",
 		"concern":{
-			
-			"list":[1,2]
+			"list":[1,2],
+			"length":2
 		},
 		"fans":{
-		
-			"list":[2,5]
+			"list":[2,5],
+			"length":2
 		}
 		
 	},{
@@ -91,8 +92,8 @@
 		"university":"",
 		"concern":{},
 		"fans":{
-			
-			"list":[2,5]
+			"list":[2,5],
+			"length":2
 		}
 		
 	},{

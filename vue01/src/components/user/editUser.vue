@@ -87,7 +87,7 @@
 					签名
 				</el-col>
 				<el-col :span="18" class="editDesc text-right" @click.native.stop="editBgcolorDesc=true">
-					<span>{{user.sign}}</span>
+					<span class="sign">{{user.sign}}</span>
 				</el-col>
 			</el-row>
 		</div>
@@ -195,6 +195,11 @@
 	.editContentHeight{
 		min-height: 50px;
 		line-height: 50px;
+	}
+	.sign{
+		line-height: 30px;
+		display: inline-block;
+		vertical-align: text-top;
 	}
 	.updataImg{
 	    width: 100%;

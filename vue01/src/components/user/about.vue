@@ -49,7 +49,7 @@
 			let userId=cookie.cookie.getCookie("userId");
 			this.$axios.get("./static/json/user.json")
 			.then((res)=>{
-				console.log(res.data.user[userId])
+				
 				this.userInfo=res.data.user[userId];
 			})
 			this.$axios.get("./static/json/userComment.json")

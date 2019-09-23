@@ -38,14 +38,14 @@
 		mounted(){
 			this.$axios.get("./static/json/userGynamic.json")
 			.then((res)=>{
-				console.log(res.data);
+				/*console.log(res.data);*/
 				this.shareComment=res.data;
 			})
 		}
 	}
 </script>
 
-<style>
+<style scoped="scoped">
 	*{
 	    box-sizing: border-box;
 	}
