@@ -104,7 +104,7 @@
 	  	<!--编辑歌单信息S-->
 		<el-drawer :title="clickList==0?'歌单：'+ songsLists.list[songIndex].name:'歌单：'+ collectionSongsLists.list[songIndex].name" :visible.sync="songDrawer" :direction="direction" :show-close="showClose">
 			<div>
-				<el-row :gutter="24" v-for="(item , index) in editSongsList" @click.native.stop="delSong(songIndex)">
+				<el-row :gutter="24" v-for="(item , index) in editSongsList" @click.native.stop="delSong(item.clickEvent,songIndex)">
 					<el-col :span="4"  class="text-center" v-show="!(index==2&&clickList==1)">
 						<i :class="item.icon"></i>
 					</el-col>
@@ -130,11 +130,14 @@
 		<!--新建歌单信息E-->
 	    <!-- ref 用来调用 子组件的方法 show  -->
 	    <songSheet  :songSheet="selectedSongSheet" ref="songSheets" class="songSheets"></songSheet>
+	    <!--编辑页面-->
+	    <edit ref="edit"> </edit>
 	</div>
 </template>
 
 <script>
 	import songSheet from '../songSheet/songSheet';
+	import edit from "../songSheet/editSongSheet";
 	export default {
 	    data() {
 	      return {
@@ -224,18 +227,44 @@
 	        editSongsList:[
 	        	{
 	        		icon:"el-icon-download",
-	        		name:"下载"
+	        		name:"下载（暂无此功能）",
+	        		clickEvent:"download"
 	        	},{
 	        		icon:"el-icon-share",
-	        		name:"分享"
+	        		name:"分享（暂无此功能）",
+	        		clickEvent:"share"
 	        	},{
 	        		icon:"el-icon-edit",
-	        		name:"编辑"
+	        		name:"编辑",
+	        		clickEvent:"edit"
 	        	},{
 	        		icon:"el-icon-delete",
-	        		name:"删除"
+	        		name:"删除",
+	        		clickEvent:"del"
 	        	},
-	        ]
+	        ],
+	        clickEvent:{
+	        	download:(index)=>{
+	        		console.log("download="+index);
+	        	},
+	        	share:(index)=>{
+	        		console.log("share="+index);
+	        	},
+	        	edit:(index)=>{
+	        		let editInfo={};
+	        		editInfo.index=index;
+					editInfo.type=this.clickList;
+					this.$refs.edit.show(editInfo);
+					this.songDrawer = false;
+	        	},
+	        	del:(index)=>{
+		      		let songList="";
+			      	this.clickList==0?songList=this.songsLists:songList=this.collectionSongsLists;
+			      	songList.list.splice(index,1);
+			      	songList.length--;
+			      	this.songDrawer = false;
+		      	}
+	        }
 	      };
 	    },
 	    mounted(){
@@ -277,14 +306,9 @@
 	       	this.form.name="";//清空表单填写数据
 	      	this.dialogFormVisible=false;
 	      },
-	      delSong(index){
-	      	let songList="";
-	      	this.clickList==0?songList=this.songsLists:songList=this.collectionSongsLists;
-	      	songList.list.splice(index,1);
-	      	songList.length--
-	      	this.songDrawer = false;
-	      	//删除歌单
-
+	      delSong(Event,index){
+	      	/*处理执行函数*/
+	      	this.clickEvent[Event](index);
 	      },selectSheet(sheet,index, event) { // 设置选中的商品以便传递给 sheet组件
 	       		/*console.log(event._constructed)
 		        if (!event._constructed) {
@@ -297,7 +321,8 @@
       		},
 	    },
 	    components:{
-	    	songSheet: songSheet // 注册food组件
+	    	songSheet: songSheet, // 注册food组件
+	    	edit:edit
 	    }
 	  }
 </script>

@@ -109,16 +109,19 @@
 				/*this.editBgcolorName=true;*/
 			},
 			cancelName(){
-				this.editSheetName=false
+				/*取消修改歌单名单*/
+				this.editBgcolorName=false
 			},
 			submitName(){
-				this.editSheetName=false
+				/*修改歌单名称*/
+				this.editBgcolorName=false
 			},
 			cancelDesc(){
-				this.editSheetDesc=false
-				
+				/*取消修改歌单描述*/
+				this.editBgcolorDesc=false
 			},
 			submitDesc(){
+				/*修改歌单描述*/
 				this.editBgcolorDesc=false
 			}
 		}
