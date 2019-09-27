@@ -15,10 +15,10 @@
 		<!--修改内容部分-->
 		<div class="editContent">
 			<el-row class="coverImg border-bottom">
-				<el-col :span="6">
+				<el-col :span="8">
 					头像
 				</el-col>
-				<el-col :span="18" class="editImg text-right">
+				<el-col :span="16" class="editImg text-right">
 					<span>
 						<img :src="user.headPortrait" alt="" />
 					</span>
@@ -26,10 +26,10 @@
 				</el-col>
 			</el-row>
 			<el-row class="coverImg border-bottom">
-				<el-col :span="6">
+				<el-col :span="8">
 					个人主页背景
 				</el-col>
-				<el-col :span="18" class="editImg text-right">
+				<el-col :span="16" class="editImg text-right">
 					<span>
 						<img :src="user.bGPic" alt="" />
 					</span>
@@ -37,18 +37,18 @@
 				</el-col>
 			</el-row>
 			<el-row class="editContentHeight border-bottom" @click.native.stop="editBgcolorName = true">
-				<el-col :span="6">
+				<el-col :span="8">
 					昵称
 				</el-col>
-				<el-col :span="18" class="editName text-right" >
+				<el-col :span="16" class="editName text-right" >
 					<span>{{user.name}}</span>
 				</el-col>
 			</el-row>
 			<el-row class="editContentHeight border-bottom">
-				<el-col :span="6">
+				<el-col :span="8">
 					性别
 				</el-col>
-				<el-col :span="18" class="sheetTag text-right">
+				<el-col :span="16" class="sheetTag text-right">
 					<span>{{user.sex}}</span>
 					<!--<div v-if="sheetInfo.tag">
 					  <span v-for="item in sheetInfo.tag" class="tagTitle">
@@ -59,34 +59,34 @@
 				</el-col>
 			</el-row>
 			<el-row class="editContentHeight border-bottom" @click.native.stop="editBgcolorName = true">
-				<el-col :span="6">
+				<el-col :span="8">
 					生日
 				</el-col>
-				<el-col :span="18" class="editName text-right" >
+				<el-col :span="16" class="editName text-right" >
 					<span>{{user.birthday}}</span>
 				</el-col>
 			</el-row>
 			<el-row class="editContentHeight border-bottom" @click.native.stop="editBgcolorName = true">
-				<el-col :span="6">
+				<el-col :span="8">
 					地区
 				</el-col>
-				<el-col :span="18" class="editName text-right" >
+				<el-col :span="16" class="editName text-right" >
 					<span>{{user.region}}</span>
 				</el-col>
 			</el-row>
 			<el-row class="editContentHeight border-bottom" @click.native.stop="editBgcolorName = true">
-				<el-col :span="6">
+				<el-col :span="8">
 					大学
 				</el-col>
-				<el-col :span="18" class="editName text-right" >
+				<el-col :span="16" class="editName text-right" >
 					<span>{{user.university}}</span>
 				</el-col>
 			</el-row>
 			<el-row class="editContentHeight">
-				<el-col :span="6">
+				<el-col :span="8">
 					签名
 				</el-col>
-				<el-col :span="18" class="editDesc text-right" @click.native.stop="editBgcolorDesc=true">
+				<el-col :span="16" class="editDesc text-right" @click.native.stop="editBgcolorDesc=true">
 					<span class="sign">{{user.sign}}</span>
 				</el-col>
 			</el-row>

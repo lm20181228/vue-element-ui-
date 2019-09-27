@@ -211,71 +211,71 @@
 		color: #666;
 	}
 	/*歌单信息部分*/
-.songInfoMoudel{
-	padding: 60px 10px 10px;
-	height: 200px;
-}
-.sheetInfo>.sheetName{
-	font-size: 24px;
-	white-space:nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-.author>img{
-	width: 20px;
-	height: 20px;
-	border-radius: 50%;
-	vertical-align: middle;
-}
-.author>span{
-	white-space:nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	font-size: 14px ;
-}
-.editer{
-	position: absolute;
-	bottom: 20px;
-	font-size: 12px;
-    width: 50%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.editerDesc{
-	display: inline-block;
-	max-width: 80%;
-	
-   /* display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;*/
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    vertical-align: sub;
-    font-size: 12px;
-}
-.songImg{
-	height: 140px;
-	line-height: 140px;
-}
-.songImg img{
-	width: 100%;
-	max-height: 100%;
-	vertical-align: middle;
-}
-.operateBtns{
-	text-align: center;
-	padding: 8px 0;
-}
-/*歌曲列表*/
-.songsList{
-    background: #fff;
-    border-radius: 12px 12px 0 0;
-	padding: 10px;
-	min-height: calc(100vh - 350px);
-}
-.songsList .song{
-	height: 50px;
-	line-height: 50px;
-}
+	.songInfoMoudel{
+		padding: 60px 10px 10px;
+		height: 200px;
+	}
+	.sheetInfo>.sheetName{
+		font-size: 24px;
+		white-space:nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	.author>img{
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		vertical-align: middle;
+	}
+	.author>span{
+		white-space:nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		font-size: 14px ;
+	}
+	.editer{
+		position: absolute;
+		bottom: 20px;
+		font-size: 12px;
+	    width: 50%;
+	    white-space: nowrap;
+	    overflow: hidden;
+	}
+	.editerDesc{
+		display: inline-block;
+		max-width: 80%;
+		
+	   /* display: -webkit-box;
+	    -webkit-box-orient: vertical;
+	    -webkit-line-clamp: 2;*/
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+	    white-space: nowrap;
+	    vertical-align: sub;
+	    font-size: 12px;
+	}
+	.songImg{
+		height: 140px;
+		line-height: 140px;
+	}
+	.songImg img{
+		width: 100%;
+		max-height: 100%;
+		vertical-align: middle;
+	}
+	.operateBtns{
+		text-align: center;
+		padding: 8px 0;
+	}
+	/*歌曲列表*/
+	.songsList{
+	    background: #fff;
+	    border-radius: 12px 12px 0 0;
+		padding: 10px;
+		min-height: calc(100vh - 350px);
+	}
+	.songsList .song{
+		height: 50px;
+		line-height: 50px;
+	}
 </style>

@@ -97,7 +97,7 @@
 		  	</el-row>
 		  	<el-row :gutter="24">
 		  		<el-col :span="4"  class="text-center"><i class="el-icon-tickets"></i></el-col>
-		  		<el-col :span="20" class="el_borderB">歌单管理</el-col>
+		  		<el-col :span="20" class="el_borderB" @click.native="manageSheet()">歌单管理</el-col>
 		  	</el-row>
 		</el-drawer>
 	  	<!--新增我的歌单弹窗E-->
@@ -132,12 +132,15 @@
 	    <songSheet  :songSheet="selectedSongSheet" ref="songSheets" class="songSheets"></songSheet>
 	    <!--编辑页面-->
 	    <edit ref="edit"> </edit>
+	    <!--歌单管理页面-->
+	    <manage ref="manage" ></manage>
 	</div>
 </template>
 
 <script>
 	import songSheet from '../songSheet/songSheet';
 	import edit from "../songSheet/editSongSheet";
+	import manage from "../songSheet/manageSheet";
 	export default {
 	    data() {
 	      return {
@@ -306,6 +309,11 @@
 	       	this.form.name="";//清空表单填写数据
 	      	this.dialogFormVisible=false;
 	      },
+	      manageSheet(){
+	      	let manage=this.clickList==0?"songsLists":"collectionSongsLists";
+	      	this.$refs.manage.show(manage);
+	      	this.drawer=false;
+	      },
 	      delSong(Event,index){
 	      	/*处理执行函数*/
 	      	this.clickEvent[Event](index);
@@ -321,8 +329,9 @@
       		},
 	    },
 	    components:{
-	    	songSheet: songSheet, // 注册food组件
-	    	edit:edit
+	    	songSheet: songSheet, // 注册组件
+	    	edit:edit,//编辑
+	    	manage:manage,//歌单管理
 	    }
 	  }
 </script>
