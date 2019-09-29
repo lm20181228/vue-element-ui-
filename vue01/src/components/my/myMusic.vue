@@ -38,7 +38,7 @@
 	  		<el-collapse >
 	  			<!--v-model="activeNames" @change="handleChange"-->
 	  			<el-collapse-item   name = "1">
-	  				<div class="collapse-title songSheetPosition" slot="title">创建的歌单({{songsLists.length}})
+	  				<div class="collapse-title songSheetPosition" slot="title">创建的歌单({{songsLists&&songsLists.length}})
 	  					<div class="operation">
 	  						<span class="addMyList" @click.stop="dialogFormVisible = true">+</span>
 	  						<span class="moreOperations"  @click.stop="drawer = true,clickList=0">:</span>
@@ -64,7 +64,7 @@
 				  	</div>
 	  			</el-collapse-item>
 	  			<el-collapse-item name = "2">
-	  				<div class="collapse-title songSheetPosition" slot="title">收藏的歌单({{collectionSongsLists.length}})
+	  				<div class="collapse-title songSheetPosition" slot="title">收藏的歌单({{collectionSongsLists&&collectionSongsLists.length}})
 	  					<div class="operation">
 	  						<span class="moreOperations"  @click.stop="drawer = true,clickList=1">:</span>
 	  					</div>
@@ -263,6 +263,7 @@
 	        	del:(index)=>{
 		      		let songList="";
 			      	this.clickList==0?songList=this.songsLists:songList=this.collectionSongsLists;
+			      	
 			      	songList.list.splice(index,1);
 			      	songList.length--;
 			      	this.songDrawer = false;

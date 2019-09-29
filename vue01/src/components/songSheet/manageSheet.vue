@@ -21,7 +21,7 @@
 							
 						</el-checkbox>-->
 						<label>
-							<input type="checkbox" name="type" value="" :attrId="item.id"/>
+							<input type="checkbox" name="type" value="" @input="select()" :attrId="item.id"/>
 							<span  class="Namw">{{item.name }}</span>
 							
 						</label>
@@ -59,6 +59,7 @@
 				this.select();
 			},
 			selectAll(){
+				console.log(this.status)
 				if(this.status){
 					$("[name=type]").prop("checked",false);
 					this.status=false;
@@ -71,8 +72,14 @@
 			},
 			select(){
 				
-				
-				
+				this.selectedNum=$("[name='type']:checked").length;
+				if(this.selectedNum==$("[name='type']").length){
+					console.log("sfasf");
+					this.status=true;
+				}else if(this.selectedNum==0){
+					console.log("sfasf");
+					this.status=false;
+				}
 				/*console.log($("[name='type']:checked").attr("attrid"));*/
 			},
 			deleteSelected(){
@@ -83,23 +90,18 @@
 					/*删除选中*/
 				});
 				var len=selectedArr.length;
-				console.log(selectedArr.shift());
-				while(len<=0){
-					
+				while(len>0){
 					let selectElm=selectedArr.shift();
-					console.log(selectElm);
-					for(var item of self.songSheet.list){
-						console.log(item);
-						console.log(selectElm);
+					for(var i in self.songSheet.list){
+						let item=self.songSheet.list[i];
 						if(item.id==selectElm){
-							item.delete();
+							self.songSheet.list.splice(i,1);
 						}
 					}
 					len--;
 				}
-				
-				
-				
+				$("[name='type']").prop("checked",false);
+				this.selectedNum=0;
 			},
 			back(){
 				this.manage=false;
