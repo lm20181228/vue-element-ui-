@@ -302,7 +302,7 @@
 	      	var newSongs={
 	        	id:this.songsLists.length,
 	        	name:this.form.name,
-	        	img:"/static/img/my/wangyiyun.png",
+	        	img:"./static/img/my/wangyiyun.png",
 	        	mun:0
 	       	};
 	       	this.songsLists.list.unshift(newSongs);//把新建歌单放置在歌单列表前
