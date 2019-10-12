@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import myMusic from '@/components/my/myMusic'
+import recentlySongs from '@/components/my/recentlySongs'
 import find from '@/components/find/find'
 import editUser from '@/components/user/editUser'
 import Header from '@/components/header'
@@ -27,6 +28,11 @@ export default new Router({
 	            default: myMusic, //默认省略不写name的情况
 	            footer: Footer
 			}
+			
+		},{
+			path:"/recentSongs",
+			name:"最近播放音乐",
+			component:recentlySongs
 			
 		},{
 			path:"/find",

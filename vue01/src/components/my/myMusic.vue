@@ -17,7 +17,7 @@
 	  	<!--本地音乐S-->
   		<el-card class="box-card" id="localInfo">
 		  	<div v-for="item in localInfo" class="text localItem">
-		  		<router-link to="/localMusic">
+		  		<router-link :to="{path:item.path}">
 		  			<el-row :gutter="24">
 		  				<el-col :span="4" class="text-center">
 		  					<span class="localInfoIcon ">
@@ -182,22 +182,27 @@
 	        localInfo:[{
 	        	id:1,
 	        	name:"本地音乐",
+	        	Path:"",
 	        	icon:"el-icon-headset"
 	        },{
 	        	id:2,
 	        	name:"最近播放",
+	        	path:"recentSongs",
 	        	icon:"el-icon-headset"
 	        },{
 	        	id:3,
 	        	name:"下载管理",
+	        	path:"",
 	        	icon:"el-icon-download"
 	        },{
 	        	id:4,
 	        	name:"我的电台",
+	        	path:"",
 	        	icon:"el-icon-microphone"
 	        },{
 	        	id:5,
 	        	name:"我的收藏",
+	        	path:"",
 	        	icon:"el-icon-star-off"
 	        }],
 	        activeNames: ['1'],
