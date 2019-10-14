@@ -32,7 +32,10 @@ export default new Router({
 		},{
 			path:"/recentSongs",
 			name:"最近播放音乐",
-			component:recentlySongs
+			components:{
+	            default: recentlySongs, //默认省略不写name的情况
+	            footer: Footer
+			}
 			
 		},{
 			path:"/find",
