@@ -317,7 +317,7 @@
 	      },
 	      manageSheet(){
 	      	let manage=this.clickList==0?"songsLists":"collectionSongsLists";
-	      	this.$refs.manage.show(manage);
+	      	this.$refs.manage.show("./static/json/songSheet.json",manage);
 	      	this.drawer=false;
 	      },
 	      delSong(Event,index){

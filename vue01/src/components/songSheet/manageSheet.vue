@@ -14,7 +14,7 @@
 			</el-row>
 		</el-header>
 		<el-main class="sheetList">
-			<div v-for="(item,i ) in songSheet.list">
+			<div v-for="(item,i ) in songSheet">
 				<el-row class="" :gutter="24">
 					<el-col :span='20' class="sheetName">
 						<!--<el-checkbox  name="type"  :attrId="item.id">
@@ -50,11 +50,16 @@
 			}
 		},
 		methods:{
-			show(sheetIndex){
+			show(url,sheetIndex){
 				this.manage=true;
-				this.$axios.get("./static/json/songSheet.json")
+				this.$axios.get(url)
 				.then((response)=>{
-					this.songSheet=response.data.data[sheetIndex];
+					if(sheetIndex){
+						this.songSheet=response.data.data[sheetIndex].list;
+					}else{
+						this.songSheet=response.data.songs;
+					}
+					console.log(this.songSheet)
 				});
 				this.select();
 			},
@@ -74,10 +79,8 @@
 				
 				this.selectedNum=$("[name='type']:checked").length;
 				if(this.selectedNum==$("[name='type']").length){
-					console.log("sfasf");
 					this.status=true;
 				}else if(this.selectedNum==0){
-					console.log("sfasf");
 					this.status=false;
 				}
 				/*console.log($("[name='type']:checked").attr("attrid"));*/
