@@ -187,7 +187,7 @@
 	        },{
 	        	id:2,
 	        	name:"最近播放",
-	        	path:"recentSongs",
+	        	path:"recent",
 	        	icon:"el-icon-headset"
 	        },{
 	        	id:3,

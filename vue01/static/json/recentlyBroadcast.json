@@ -62,5 +62,42 @@
 			"author":"吱吱吱",
 			"audioUrl":"./static/songs/画.mp3",
 			"songImg":"./static/img/song/7.jpeg"
+		}],
+		"live":[],
+		"video":[{
+			"id":0,
+			"name":"[陈情令]无羁--拇指琴",
+			"author":"刘先生",
+			"createTime":"2018-01-12",
+			"videoUrl":"",
+			"img":"./static/img/song/7.jpeg"
+		},{
+			"id":1,
+			"name":"林俊杰-美人鱼演唱会版本（live）",
+			"author":"%$^&&*^",
+			"createTime":"2014-01-12",
+			"videoUrl":"",
+			"img":"./static/img/song/3.jpeg"
+		},{
+			"id":2,
+			"name":"周杰伦-告白气球",
+			"author":"小周周",
+			"createTime":"2017-01-12",
+			"videoUrl":"",
+			"img":"./static/img/song/1.jpeg"
+		},{
+			"id":3,
+			"name":"韩国女团 -",
+			"author":"青海省覅",
+			"createTime":"2019-10-12",
+			"videoUrl":"",
+			"img":"./static/img/song/1.jpeg"
+		},{
+			"id":4,
+			"name":"创造101",
+			"author":"天使小姐姐",
+			"createTime":"2019-07-12",
+			"videoUrl":"",
+			"img":"./static/img/song/11.jpeg"
 		}]
 }

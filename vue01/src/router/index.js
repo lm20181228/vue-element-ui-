@@ -2,7 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import myMusic from '@/components/my/myMusic'
-import recentlySongs from '@/components/my/recentlySongs'
+import recent from '@/components/my/recentlySongs'
+import song from '@/components/my/recently/song'
+import live from '@/components/my/recently/live'
+import video from '@/components/my/recently/video'
 import find from '@/components/find/find'
 import editUser from '@/components/user/editUser'
 import Header from '@/components/header'
@@ -30,12 +33,25 @@ export default new Router({
 			}
 			
 		},{
-			path:"/recentSongs",
+			path:"/recent/",
 			name:"最近播放音乐",
 			components:{
-	            default: recentlySongs, //默认省略不写name的情况
+	            default: recent, //默认省略不写name的情况
 	            footer: Footer
-			}
+			},
+			children:[{
+				path:'',
+				component:song
+			},{
+				path:'song',
+				component:song
+			},{
+				path:'live',
+				component:live
+			},{
+				path:'video',
+				component:video
+			}]
 			
 		},{
 			path:"/find",

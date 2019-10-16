@@ -10,131 +10,55 @@
 				最近播放
 			</el-col>
 			<el-col :span="5">
-				清空
+				<span @click="clear()">清空</span>
 			</el-col>
 		</el-row>
 		<el-row :gutter="24" class="tab">
-			<router-link to="">
+			<router-link to="/recent/song">
 				<el-col :span="8" class="text-center">
-					<span>歌曲</span>
+					<span>歌曲 107</span>
 				</el-col>
 			</router-link>
-			<router-link to="">
+			<router-link to="/recent/live">
 				<el-col :span="8" class="text-center">
-					<span>直播</span>
+					<span>直播 0</span>
 				</el-col>
 			</router-link>
-			<router-link to="">
+			<router-link to="/recent/video">
 				<el-col :span="8" class="text-center">
-					<span>视频</span>
+					<span>视频 78</span>
 				</el-col>
 			</router-link>
 		</el-row>
 		<div class="recentlyContent">
-			<el-row class="songTitle">
-				<el-col :span="18">
-					<i class="el-icon-video-play"></i>
-					<span>播放全部</span>
-					<span class="songsNum">（共111首）</span>
-				</el-col>
-				<el-col :span="6" class="text-right">
-					<span @click="select()"><i class='el-icon-s-fold'></i>多选</span>
-				</el-col>
-			</el-row>
-			<el-row :gutter="24" class="song" v-for="(item,i) in songs">
-				<el-col :span="16" class="songName">
-					<p class="songN">{{item.name}}</p>
-					<p class="songA">{{item.author}}-专辑名称</p>
-				</el-col>
-				<el-col :span="8" class="operateBtn">
-					<span><i class="el-icon-video-camera-solid"></i></span>
-					<span @click="operate(item.id)">:</span>
-				</el-col>
-			</el-row>
+			<router-view></router-view>
 		</div>
-		<el-drawer :visible.sync="drawer" :direction="direction" :show-close="showClose">
-			<div class="frameTitle">
-				<el-row>
-					<el-col :span="4">
-						<img :src="frameTitle.songImg" alt="" />
-					</el-col>
-					<el-col :span="20">
-						<p>歌曲：{{frameTitle.name}}</p>
-						<p>{{frameTitle.author}}</p>
-					</el-col>
-				</el-row>
-				<div>
-					<el-row v-for="(item,i) in operates">
-						<el-col>
-							<i :class="item.icon"></i>
-							<span>{{item.name}}</span>
-						</el-col>
-					</el-row>
-				</div>
-			</div>
-		</el-drawer>
-		<manage ref="manage" ></manage>
+		<!--清空询问弹框-->
+		<el-dialog
+		  :visible.sync="centerDialogVisible"
+		  width="80%"
+		  center>
+		  <span>清空所有最近播放歌曲？</span>
+		  <span slot="footer" class="dialog-footer">
+		    <el-button @click="centerDialogVisible = false">取 消</el-button>
+		    <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
+		  </span>
+		</el-dialog>
 		<router-view class="main" name="footer"></router-view>
 	</div>
 </template>
 
 <script>
-	import manage from "../songSheet/manageSheet";
 	export default {
 		data(){
 			return {
-				songs:"",
-				drawer:false,
-				direction: 'btt',//弹框出现方向
-				showClose:false,
-				frameTitle:"",
-				operates:[{
-						"icon":"el-icon-play",
-						"name":"下一首播放"	
-					},{					
-						"icon":"el-icon-add",
-						"name":"收藏到歌单"	
-					},{					
-						"icon":"el-icon-down",
-						"name":"下载"	
-					},{					
-						"icon":"el-icon-user",
-						"name":"评论"	
-					},{					
-						"icon":"el-icon-ahsre",
-						"name":"分享"	
-					},{					
-						"icon":"el-icon-user",
-						"name":"歌手"	
-					},{					
-						"icon":"el-icon-delete",
-						"name":"删除"	
-					}
-				],
+				centerDialogVisible:false,
 			}
-		},
-		mounted(){
-			this.$axios.get("./static/json/recentlyBroadcast.json")
-				.then((response)=>{
-					/*获取*/
-					this.songs=response.data.songs					
-				})
 		},
 		methods:{
-			select:function(){
-		      	/*let manage=this.clickList==0?"songsLists":"collectionSongsLists";*/
-		      	this.$refs.manage.show("./static/json/recentlyBroadcast.json");
-		      	/*this.drawer=false;*/
-			},
-			operate:function(id){
-				console.log(id)
-				this.frameTitle=this.songs[id];
-				console.log(this.frameTitle);
-				this.drawer=true;
+			clear:function(){
+				this.centerDialogVisible=true;
 			}
-		},
-		components:{
-			manage:manage
 		}
 		
 	}
@@ -147,15 +71,13 @@
 	.title{
 		height: 60px;
 		line-height: 60px;
-		border-bottom: 1px solid #333;
+		border-bottom: 1px solid #dcdcdc;
 	}
 	.tab{
-		/*border: 1px solid red;*/
 		height: 50px;
 		line-height: 50px;
 	}
 	.recentlyContent{
-		/*border: 1px solid red;*/
 		height: calc(100vh - 170px);
 	    overflow: auto;
 	}
@@ -194,6 +116,26 @@
 	}
 	.songsNum{
 		color: #94989e;
-		
+	}
+	.frameTitle{
+		padding: 6px 20px;
+	}
+	.operateList{
+		height: 50px;
+		line-height: 50px;
+		border-bottom: 1px solid #dcdcdc;
+	}
+	.operateIcon{
+		padding: 0 6px;
+	}
+	.drawerHeader{
+		border-bottom: 1px solid #dcdcdc;
+	}
+	.drawerTitle{
+		padding:0 6px;
+	}
+	.drawerTitle>p{
+		height: 20px;
+		line-height: 20px;
 	}
 </style>
