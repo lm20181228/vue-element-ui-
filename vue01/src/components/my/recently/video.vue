@@ -7,7 +7,7 @@
 			</el-col>
 			<el-col :span="14">
 				<p>{{item.name}}</p>
-				<p>{{item.createTime}} by {{item.author}}</p>
+				<p class="videoCreate">{{item.createTime}} by {{item.author}}</p>
 			</el-col>
 		</el-row>
 	</div>
@@ -46,5 +46,11 @@
 	.videoImg{
 		width: 70%;
 		border-radius: 10%;
+	}
+	.videoCreate{
+		font-size: 12px;
+		color: #94989e;
+		height: 30px;
+		line-height: 30px;
 	}
 </style>

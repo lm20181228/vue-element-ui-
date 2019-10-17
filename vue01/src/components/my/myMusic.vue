@@ -26,7 +26,7 @@
 		  					</span>
 		  				</el-col>
 		  				<el-col :span="20">
-		  					<span class="localName">{{item.name}}</span>
+		  					<span class="localName">{{item.name}}({{item.num}})</span>
 		  				</el-col>
 		  			</el-row>
 		  		</router-link>	
@@ -183,26 +183,31 @@
 	        	id:1,
 	        	name:"本地音乐",
 	        	Path:"",
+	        	num:30,
 	        	icon:"el-icon-headset"
 	        },{
 	        	id:2,
 	        	name:"最近播放",
 	        	path:"recent",
+	        	num:185,
 	        	icon:"el-icon-headset"
 	        },{
 	        	id:3,
 	        	name:"下载管理",
 	        	path:"",
+	        	num:0,
 	        	icon:"el-icon-download"
 	        },{
 	        	id:4,
 	        	name:"我的电台",
 	        	path:"",
+	        	num:0,
 	        	icon:"el-icon-microphone"
 	        },{
 	        	id:5,
 	        	name:"我的收藏",
 	        	path:"",
+	        	num:2,
 	        	icon:"el-icon-star-off"
 	        }],
 	        activeNames: ['1'],

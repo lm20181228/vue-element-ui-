@@ -1,9 +1,15 @@
 <template>
 	<div>
 		<p class="text-center" v-if="playRecord">暂无播放记录</p>
-		<div v-for="(item , i) in liveList">
-			<p>zfasfasf098法法师</p>
-		</div>
+		<el-row v-for="(item,i) in liveList" class="live">
+			<el-col :span="10">
+				<img :src="item.img" alt="" class="liveImg"/>
+			</el-col>
+			<el-col :span="14">
+				<p>{{item.name}}</p>
+				<p>{{item.createTime}} by {{item.author}}</p>
+			</el-col>
+		</el-row>
 	</div>
 </template>
 
