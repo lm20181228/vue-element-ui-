@@ -1,0 +1,7 @@
+{
+	"id":0,
+	"name":"歌曲1",
+	"author":"小栗旬",
+	"audioUrl":"./static/songs/画.mp3",
+	"songImg":"./static/img/song/1.jpeg"
+}

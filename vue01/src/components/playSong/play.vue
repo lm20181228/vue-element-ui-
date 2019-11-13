@@ -43,7 +43,7 @@
 						<i class="el-icon-warning-outline"></i>
 					</el-col>
 				</el-row>
-				<audio :src="songInfo.audioUrl" controls="controls"></audio>
+				<audio :src="songInfo.audioUrl" controls="controls" id="audio" controlslist="nofullscreen" ></audio>
 				<el-row type="flex" class="row-bg text-center songOPerate" justify="space-between">
 					<el-col :span="4">
 						<i class="el-icon-menu"></i>
@@ -51,8 +51,8 @@
 					<el-col :span="4">
 						<i class="el-icon-caret-left"></i>
 					</el-col>
-					<el-col :span="4">
-						<i class="el-icon-video-play"></i>
+					<el-col :span="4" >
+						<i class="el-icon-video-play" @click="play()"></i>
 					</el-col>
 					<el-col :span="4">
 						<i class="el-icon-caret-right"></i>
@@ -83,7 +83,21 @@
 			},
 			hide(){
 				this.isPlay=false;		
+			},
+			play(){
+				audio.addEventListener("loadedmetadata", function(str)
+				  {
+				  	console.log("sdfasf");
+				  	console.log(str);
+				  }
+				)
+				/*if(audio.paused){
+					audio.play();
+				}else{
+					audio.pause();
+				}*/
 			}
+			
 		},
 		components:{
 			editSheet:edit
@@ -94,6 +108,7 @@
 			}
 		}
 	}
+	
 </script>
 
 <style>
