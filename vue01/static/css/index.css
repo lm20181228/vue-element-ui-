@@ -27,7 +27,7 @@ a{
     
     width: 100%;
     height: 100Vh;
-    z-index: 2;
+    z-index: 3;
 	background: #FFF;
     overflow: auto;
 }
@@ -36,7 +36,7 @@ a{
 	position: fixed;
 	top: 0;
 	left: 0;
-	z-index: 3;
+	z-index: 2;
 	
 	width: 100%;
 	height: 60px;
@@ -90,7 +90,9 @@ a{
 	padding: 0;
 }
 .song_portrait>img{
-	width: 100%;
+	/*width: 100%;*/
+	width: 46px;
+	height: 46px;
 	border-radius: 50%;
 	vertical-align: middle;
 }

@@ -43,7 +43,26 @@
 						<i class="el-icon-warning-outline"></i>
 					</el-col>
 				</el-row>
-				<audio :src="songInfo.audioUrl" controls="controls" id="audio" controlslist="nofullscreen" ></audio>
+				<!--制作进度条-->
+				<div class="text-center">
+					<div class="process">
+						
+						<el-row :gutter="24">
+							<el-col :span="4">
+								<p class="time">{{playProgress.currentTime}}</p>
+							</el-col>
+							<el-col :span="16">
+								<div class="pressBack">
+									<span class="processBar"></span>
+								</div>
+							</el-col>
+							<el-col :span="4">
+								<p class="time">{{playProgress.duration}}</p>
+							</el-col>
+						</el-row>
+					</div>
+				</div>
+				<!--<audio :src="songInfo.audioUrl" controls="controls" id="audio" controlslist="nofullscreen" ></audio>-->
 				<el-row type="flex" class="row-bg text-center songOPerate" justify="space-between">
 					<el-col :span="4">
 						<i class="el-icon-menu"></i>
@@ -105,7 +124,11 @@
 		props:{
 			songInfo:{
 				type:Object
+			},
+			playProgress:{
+				type:Object
 			}
+			
 		}
 	}
 	
@@ -158,5 +181,35 @@
 	}
 	audio{
 		width: 100%;
+	}
+	.process{
+		height: 10px;
+		line-height: 10px;
+	}
+	
+	.process>div{
+		height: 10px;
+	}
+	.pressBack{
+		position: relative;
+		height: 6px;
+		border-radius: 6px;
+		background: #666;
+	}
+	.processBar{
+		position: absolute;
+		top: 50%;
+		left: 0;
+		display: inline-block;
+		height: 10px;
+		width: 10px;
+		margin-top: -5px;
+		margin-left: -5px;
+		border-radius: 50%;
+		background: red;
+	}
+	.time{
+		font-size: 12px;
+		height: 10px;
 	}
 </style>

@@ -21,7 +21,7 @@
 				<el-col :span="3" class="song_icon">
 					<!--播放按键-->
 					<i class="el-icon-video-play" @click="playpause()"></i>
-					<i class="el-icon-video-pause" @click="playpause()"></i>
+				<!--	<i class="el-icon-video-pause" @click="playpause()"></i>-->
 				</el-col>
 				<el-col :span="3" class="song_icon">
 					<!--更多操作-->
@@ -30,7 +30,7 @@
 			</el-row>
 		</div>
 		<!--播放页面-->
-		<play ref="palySong" :songInfo="palySongInfo"></play>
+		<play ref="palySong" :songInfo="palySongInfo" :playProgress="progress"></play>
 	</el-footer>
 </template>
 
@@ -39,8 +39,13 @@
 	export default{
 		data(){
 			return {
-				audio:"",
-				palySongInfo:""
+				audio:"",//音频信息
+				palySongInfo:"",//
+				progress:{
+					
+					
+				}//音频进度
+				
 			}
 		},
 		mounted(){
@@ -49,9 +54,14 @@
 				this.audio = response.data;
 				
 			})
+			this.progress.duration = audio.duration;
+			this.progress.currentTime = audio.currentTime;
 		},
 		methods:{
 			playpause(){
+				this.progress.duration = this.conversionTime(audio.duration);
+				this.progress.currentTime = this.conversionTime(audio.currentTime);
+				
 				if(audio.paused){
 					audio.play()
 				}else{
@@ -59,11 +69,22 @@
 				}
 			},
 			play(songInfo){
-				console.log(songInfo)
-				this.palySongInfo=songInfo;
 				
+				this.palySongInfo=songInfo;
 				this.$refs.palySong.show();
 			},
+			conversionTime(time){
+				var h,m,s;
+				var time1 = Math.floor(time);
+				console.log(time1);
+				if(time1>=60){
+					m = time1/60;
+					s = (time1%60)*0.6
+				}else{
+					s = time1;
+				}
+				return m+":"+s;
+			}
 		},
 		components:{
 			play:play
