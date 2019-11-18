@@ -12,7 +12,7 @@
 					<p>{{audio.author}}</p>
 					<!--controls 是否展示播放按键-->
 					<!--autoplay="autoplay"-->
-					<audio :src="audio.audioUrl" controls="controls" id="audio" controlslist="nofullscreen" hidden="hidden"></audio>
+					<audio :src="audio.audioUrl" controls="controls" id="audio1" controlslist="nofullscreen" hidden="hidden"></audio>
 					<!--<audio controls="controls"  id="audio" autoplay="autoplay">
 						<source :src="audio.audioUrl" type="audio/mpeg">
 						Your browser does not support the audio tag.
@@ -44,7 +44,8 @@
 				progress:{
 					
 					
-				}//音频进度
+				},//音频进度
+				flag:false,//是否正在播放，用于处理播放进度条
 				
 			}
 		},
@@ -54,40 +55,69 @@
 				this.audio = response.data;
 				
 			})
-			this.progress.duration = audio.duration;
-			this.progress.currentTime = audio.currentTime;
+			this.progress.duration = 0;
+			this.progress.currentTime = audio1.currentTime;
 		},
 		methods:{
+			getDuration(){
+				/*console.log("1")*/
+				this.progress.duration = this.conversionTime(audio1.duration);
+				this.progress.currentTime = this.conversionTime(audio1.currentTime);
+			},
 			playpause(){
-				this.progress.duration = this.conversionTime(audio.duration);
-				this.progress.currentTime = this.conversionTime(audio.currentTime);
-				
-				if(audio.paused){
-					audio.play()
+				if(audio1.paused){
+					audio1.play();
+					this.flag=true;
+					this.getDuration();
+					this.durationSettime(this.flag);
 				}else{
-					audio.pause()
+					audio1.pause();
+					this.flag=false;
+					this.durationSettime(this.flag);
 				}
 			},
 			play(songInfo){
-				
 				this.palySongInfo=songInfo;
 				this.$refs.palySong.show();
 			},
 			conversionTime(time){
-				var h,m,s;
+				var h = 0,m = 0,s = 0;
 				var time1 = Math.floor(time);
-				console.log(time1);
 				if(time1>=60){
-					m = time1/60;
-					s = (time1%60)*0.6
+					m = Math.floor(time1/60);
+					s = Math.floor((time1%60)*0.6)
 				}else{
 					s = time1;
 				}
-				return m+":"+s;
+				
+				return this.patchPosition(m)+":"+this.patchPosition(s);
+			},
+			patchPosition(num){
+				if(num<10){
+					num='0'+num;
+				}
+				return num;
+			},
+			durationSettime(flag){
+				var _this = this;
+				var time="";
+				if(flag){
+					clearInterval(time);
+					time = setInterval(function(){
+						_this.getDuration();
+					},500)
+				}else{
+					clearInterval(time);
+				}
+				
+				
 			}
 		},
 		components:{
 			play:play
+		},
+		watch:{
+			
 		}
 	}
 </script>

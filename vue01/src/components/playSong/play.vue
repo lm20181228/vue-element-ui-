@@ -49,7 +49,7 @@
 						
 						<el-row :gutter="24">
 							<el-col :span="4">
-								<p class="time">{{playProgress.currentTime}}</p>
+								<p class="time" >{{playProgress.currentTime}}</p>
 							</el-col>
 							<el-col :span="16">
 								<div class="pressBack">
@@ -93,7 +93,7 @@
 		data(){
 			return{
 				isPlay:false,
-				
+				poss:{}
 			}
 		},
 		methods:{
@@ -104,19 +104,19 @@
 				this.isPlay=false;		
 			},
 			play(){
-				audio.addEventListener("loadedmetadata", function(str)
-				  {
-				  	console.log("sdfasf");
-				  	console.log(str);
-				  }
-				)
-				/*if(audio.paused){
-					audio.play();
+				
+				if(audio1.paused){
+					audio1.play();
 				}else{
-					audio.pause();
-				}*/
+					audio1.pause();
+				}
+				console.log(this.playProgress.currentTime);
+				console.log(this.poss);
 			}
 			
+		},
+		mounted(){
+			this.poss.currentTime =this.playProgress.currentTime;
 		},
 		components:{
 			editSheet:edit
@@ -129,6 +129,15 @@
 				type:Object
 			}
 			
+		},
+		watch:{
+		    /*playProgress: (a,b)=>{     //a是value的新值，b是旧值
+		      this.poss = a;
+		      console.log(this.poss);
+		    },*/
+		     playProgress(a,b){
+		        console.log(a);
+		     },
 		}
 	}
 	
