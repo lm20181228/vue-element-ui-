@@ -116,7 +116,7 @@
 			
 		},
 		mounted(){
-			this.poss.currentTime =this.playProgress.currentTime;
+			this.poss =this.playProgress;
 		},
 		components:{
 			editSheet:edit
@@ -131,14 +131,10 @@
 			
 		},
 		watch:{
-		    /*playProgress: (a,b)=>{     //a是value的新值，b是旧值
-		      this.poss = a;
-		      console.log(this.poss);
-		    },*/
-		     playProgress(a,b){
-		        console.log(a);
-		     },
-		}
+			poss(value){
+				console.og("safasf")
+			}
+		},
 	}
 	
 </script>

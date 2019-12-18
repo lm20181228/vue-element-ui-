@@ -117,7 +117,9 @@
 			play:play
 		},
 		watch:{
-			
+			progress(value){
+				console.log("asfasf")
+			}
 		}
 	}
 </script>
