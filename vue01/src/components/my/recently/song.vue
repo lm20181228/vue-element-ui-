@@ -10,7 +10,7 @@
 				<span @click="select()"><i class='el-icon-s-fold'></i>多选</span>
 			</el-col>
 		</el-row>
-		<el-row :gutter="24" class="song" v-for="(item,i) in songs">
+		<el-row :gutter="24" class="song" v-for="(item,i) in songs" :key="i">
 			<el-col :span="16" class="songName">
 				<p class="songN">{{item.name}}</p>
 				<p class="songA">{{item.author}}-专辑名称</p>
@@ -32,7 +32,7 @@
 					</el-col>
 				</el-row>
 				<div>
-					<div v-for="(item,i) in operates" class="operateList">
+					<div v-for="(item,i) in operates" class="operateList" :key="i">
 						<i :class="item.icon" class="operateIcon"></i>
 						<span>{{item.name}}</span>
 					</div>

@@ -1,9 +1,9 @@
 <template>
 	<div>
 		<p class="text-center" v-if="playRecord">暂无播放记录</p>
-		<el-row v-for="(item,i) in liveList" class="live">
+		<el-row v-for="(item,index) in liveList" class="live" :key="index">
 			<el-col :span="10">
-				<img :src="item.img" alt="" class="liveImg"/>
+				<img :src="item.img" alt="" class="liveImg"/>	
 			</el-col>
 			<el-col :span="14">
 				<p>{{item.name}}</p>

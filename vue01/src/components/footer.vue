@@ -40,7 +40,7 @@
 		data(){
 			return {
 				audio:"",//音频信息
-				palySongInfo:"",//
+				palySongInfo:{},//
 				progress:{
 					
 					

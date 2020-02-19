@@ -127,6 +127,8 @@
 				this.isShowSong=false
 			},
 			play(songInfo){
+				console.log(songInfo);
+				console.log(typeof songInfo);
 				this.palySongInfo=songInfo;
 				
 				this.$refs.palySong.show();

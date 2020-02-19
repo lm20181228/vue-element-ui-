@@ -3,7 +3,7 @@
 		<!--社交推荐部分 S-->
 	  	<div class="socialDiv">
 	  		<ul class="social" id="social">
-		  		<li v-for="item in socialInfo">
+		  		<li v-for="(item,i) in socialInfo" :key="i">
 		  			<span class="socialIcon">{{item.icon}}</span>
 		  			<span class="socialName">{{item.name}}</span>
 		  		</li>
@@ -16,7 +16,7 @@
 		<!--社交推荐部分 E-->
 	  	<!--本地音乐S-->
   		<el-card class="box-card" id="localInfo">
-		  	<div v-for="item in localInfo" class="text localItem">
+		  	<div v-for="(item,i) in localInfo" :key="i" class="text localItem">
 		  		<router-link :to="{path:item.path}">
 		  			<el-row :gutter="24">
 		  				<el-col :span="4" class="text-center">
@@ -69,7 +69,7 @@
 	  						<span class="moreOperations"  @click.stop="drawer = true,clickList=1">:</span>
 	  					</div>
 	  				</div>
-	  				<div class="text songSheetPosition" v-for="(item,i) in collectionSongsLists.list"  @click="clickList=1,selectSheet(item, i,$event)">
+	  				<div class="text songSheetPosition" v-for="(item,i) in collectionSongsLists.list"  :key="i" @click="clickList=1,selectSheet(item, i,$event)">
 				  		<div>
 				  			<el-row :gutter="24">
 				  				<el-col :span="4">
@@ -102,9 +102,9 @@
 		</el-drawer>
 	  	<!--新增我的歌单弹窗E-->
 	  	<!--编辑歌单信息S-->
-		<el-drawer :title="clickList==0?'歌单：'+ songsLists.list[songIndex].name:'歌单：'+ collectionSongsLists.list[songIndex].name" :visible.sync="songDrawer" :direction="direction" :show-close="showClose">
+		<el-drawer v-if="songDrawer" :title="clickList==0?'歌单：'+ songsLists.list[songIndex].name:'歌单：'+ collectionSongsLists.list[songIndex].name" :visible.sync="songDrawer" :direction="direction" :show-close="showClose">
 			<div>
-				<el-row :gutter="24" v-for="(item , index) in editSongsList" @click.native.stop="delSong(item.clickEvent,songIndex)">
+				<el-row :gutter="24" v-for="(item,index) in editSongsList" :key="index" @click.native.stop="delSong(item.clickEvent,songIndex)">
 					<el-col :span="4"  class="text-center" v-show="!(index==2&&clickList==1)">
 						<i :class="item.icon"></i>
 					</el-col>
@@ -387,7 +387,7 @@
 	}
 	/*本地音乐信息*/
 	#localInfo{
-		boder-color:#dcdcdc;
+		border-color:#dcdcdc;
 		border-width: 1px 0 ;
 	}
 	.el-card__body{
@@ -400,9 +400,6 @@
 	.localItem{
 		height: 40px;
 		line-height: 40px;
-	}
-	.localInfoIcon{
-		
 	}
 	.localInfoIcon>img{
 		width: 100%;

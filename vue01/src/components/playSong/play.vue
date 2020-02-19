@@ -132,7 +132,7 @@
 		},
 		watch:{
 			poss(value){
-				console.og("safasf")
+				// console.log("safasf")
 			}
 		},
 	}

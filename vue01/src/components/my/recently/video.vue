@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<p class="text-center" v-if="playRecord">暂无播放记录</p>
-		<el-row v-for="(item,i) in videoList" class="video">
+		<el-row v-for="(item,i) in videoList" class="video" :key="i">
 			<el-col :span="10">
 				<img :src="item.img" alt="" class="videoImg"/>
 			</el-col>

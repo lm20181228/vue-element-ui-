@@ -40,7 +40,7 @@
 			<!--推荐歌单-->
 			<h1 class="newTitle">推荐歌单</h1>
 			<el-row :gutter="24" class="recommendSong">
-				<el-col :span="8" v-for="(item,i) in recommendSong" class="recommendPart">
+				<el-col :span="8" v-for="(item,i) in recommendSong" class="recommendPart" :key="i">
 					<img :src="item.imgUrl" alt="" />
 					<span class="recommendName">{{item.name}}</span>
 				</el-col>
@@ -48,7 +48,7 @@
 			<!--新碟-->
 			<h1 class="newTitle">新碟</h1>
 			<el-row :gutter="24" class="recommendSong">
-				<el-col :span="8" v-for="(item,i) in newDish" class="recommendPart">
+				<el-col :span="8" v-for="(item,i) in newDish" class="recommendPart" :key="i">
 					<img :src="item.imgUrl" alt="" />
 					<span class="recommendName">{{item.name}}</span>
 				</el-col>
@@ -58,7 +58,7 @@
 			<!--精选频道-->
 			<h1 class="bgWhite">精选频道</h1>
 			<!--带你感受“巅峰时刻”！-->
-			<div v-for="item in officialSelection" class="selectionPart bgWhite">
+			<div v-for="(item,i) in officialSelection" :key="i" class="selectionPart bgWhite">
 				<p class="selectName">{{item.name}}</p>
 				<router-link to="/">
 					

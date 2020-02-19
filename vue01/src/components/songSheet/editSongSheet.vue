@@ -36,7 +36,7 @@
 				</el-col>
 				<el-col :span="18" class="editTag text-right">
 					<div v-if="sheetInfo.tag">
-					  <span v-for="item in sheetInfo.tag" class="tagTitle">
+					  <span v-for="(item,i) in sheetInfo.tag"  :key="i" class="tagTitle">
 					  		{{item.title}}
 					  </span>
 					</div>

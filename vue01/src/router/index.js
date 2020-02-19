@@ -33,7 +33,6 @@ export default new Router({
 			}
 		},{
 			path:"/recent/",
-			name:"最近播放音乐",
 			components:{
 	            default: recent, //默认省略不写name的情况
 	            footer: Footer
@@ -61,7 +60,7 @@ export default new Router({
 			}
 		},{
 			path:"/user/",
-			name:"个人信息",
+			// name:"个人信息",
 			components:{
 	            default: user, //默认省略不写name的情况
 	            footer: Footer
