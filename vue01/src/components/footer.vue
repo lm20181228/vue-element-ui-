@@ -12,7 +12,7 @@
 					<p>{{audio.author}}</p>
 					<!--controls 是否展示播放按键-->
 					<!--autoplay="autoplay"-->
-					<audio :src="audio.audioUrl" controls="controls" id="audio1" controlslist="nofullscreen" hidden="hidden"></audio>
+					<audio :src="audio.audioUrl" controls="controls" id="audio1" controlslist="nofullscreen" hidden="hidden" @ended ="audioEnd()" ></audio>
 					<!--<audio controls="controls"  id="audio" autoplay="autoplay">
 						<source :src="audio.audioUrl" type="audio/mpeg">
 						Your browser does not support the audio tag.
@@ -30,7 +30,7 @@
 			</el-row>
 		</div>
 		<!--播放页面-->
-		<play ref="palySong" :songInfo="palySongInfo" :playProgress="progress"></play>
+		<play ref="palySong"  :songInfo="palySongInfo" :playProgress="progress" @func="getMsgFormSon"></play>
 	</el-footer>
 </template>
 
@@ -42,7 +42,7 @@
 				audio:"",//音频信息
 				palySongInfo:{},//
 				progress:{
-					
+					end:false,
 					
 				},//音频进度
 				flag:false,//是否正在播放，用于处理播放进度条
@@ -61,8 +61,8 @@
 		methods:{
 			getDuration(){
 				/*console.log("1")*/
-				this.progress.duration = this.conversionTime(audio1.duration);
-				this.progress.currentTime = this.conversionTime(audio1.currentTime);
+				this.progress.duration = audio1.duration;
+				this.progress.currentTime = audio1.currentTime;
 			},
 			playpause(){
 				if(audio1.paused){
@@ -80,24 +80,7 @@
 				this.palySongInfo=songInfo;
 				this.$refs.palySong.show();
 			},
-			conversionTime(time){
-				var h = 0,m = 0,s = 0;
-				var time1 = Math.floor(time);
-				if(time1>=60){
-					m = Math.floor(time1/60);
-					s = Math.floor((time1%60)*0.6)
-				}else{
-					s = time1;
-				}
-				
-				return this.patchPosition(m)+":"+this.patchPosition(s);
-			},
-			patchPosition(num){
-				if(num<10){
-					num='0'+num;
-				}
-				return num;
-			},
+			
 			durationSettime(flag){
 				var _this = this;
 				var time="";
@@ -111,15 +94,22 @@
 				}
 				
 				
-			}
+			},
+			audioEnd(){
+				console.log("播放完毕！")
+				this.durationSettime(false);
+				this.progress.end=true;
+			},
+			getMsgFormSon(data){
+				var x = document.getElementById("audio1");
+				x.currentTime = data
+			}	
 		},
 		components:{
 			play:play
 		},
 		watch:{
-			progress(value){
-				console.log("asfasf")
-			}
+			
 		}
 	}
 </script>

@@ -14,7 +14,7 @@
 			</el-row>
 		</el-header>
 		<el-main class="sheetList">
-			<div v-for="(item,i ) in songSheet">
+			<div v-for="(item,i ) in songSheet" :key="i">
 				<el-row class="" :gutter="24">
 					<el-col :span='20' class="sheetName">
 						<!--<el-checkbox  name="type"  :attrId="item.id">

@@ -49,15 +49,15 @@
 						
 						<el-row :gutter="24">
 							<el-col :span="4">
-								<p class="time" >{{playProgress.currentTime}}</p>
+								<p class="time" >{{currentTime}}</p>
 							</el-col>
 							<el-col :span="16">
 								<div class="pressBack">
-									<span class="processBar"></span>
+									<span class="processBar"><i class="controller" @touchstart="mousedown" @touchmove="mousemove" @touchend="mouseup"></i></span>
 								</div>
 							</el-col>
 							<el-col :span="4">
-								<p class="time">{{playProgress.duration}}</p>
+								<p class="time">{{duration}}</p>
 							</el-col>
 						</el-row>
 					</div>
@@ -88,35 +88,112 @@
 
 <script>
 	/*获取编辑歌单信息的组件*/
-	import edit from '../songSheet/editSongSheet'
+	import edit from '../songSheet/editSongSheet';
+	import $ from 'jquery';
 	export default {
 		data(){
 			return{
 				isPlay:false,
-				poss:{}
+				currentTime:"00:00",
+				duration:"00:00",
+				songData:"",
+				isMouseDown:false,
+				mouseX:0,
+				getCurTime:0,
 			}
 		},
 		methods:{
 			show(){
 				this.isPlay=true;
+				this.getTime(true);
+				// this.currentTime = this.conversionTime(this.playProgress.currentTime);
+				this.duration = this.conversionTime(this.playProgress.duration);
 			},
 			hide(){
-				this.isPlay=false;		
+				this.isPlay=false;	
+				this.getTime(false);	
 			},
 			play(){
-				
 				if(audio1.paused){
 					audio1.play();
+					this.getTime(true);
 				}else{
 					audio1.pause();
+					this.getTime(false);
 				}
-				console.log(this.playProgress.currentTime);
-				console.log(this.poss);
+			},
+			conversionTime(time){
+				var h = 0,m = 0,s = 0;
+				var time1 = Math.floor(time);
+				if(time1>=60){
+					m = Math.floor(time1/60);
+					s = Math.floor((time1%60)*0.6)
+				}else{
+					s = time1;
+				}
+				
+				return this.patchPosition(m)+":"+this.patchPosition(s);
+			},
+			patchPosition(num){
+				if(num<10){
+					num='0'+num;
+				}
+				return num;
+			},
+			getTime(flag){
+				if(flag){
+					if(this.playProgress.end){
+						this.getTime(false);
+					}
+					clearInterval(this.songData);
+					this.songData=setInterval(()=>{
+						this.currentTime = this.conversionTime(this.playProgress.currentTime);
+						this.duration = this.conversionTime(this.playProgress.duration);
+						this.pressBack(this.playProgress.currentTime,this.playProgress.duration)
+					},500)
+				}else{
+					clearInterval(this.songData);
+				}
+			},
+			pressBack(currenTime,duration){
+				var passBackW = $(".pressBack").width();
+				var processBarLeft = passBackW*(currenTime/duration);
+				$(".processBar").css("width",6+processBarLeft);
+				$(".controller").css("left",processBarLeft);
+			},
+			mousedown(e){
+				// e.preventDefault();
+				this.getTime(false);
+				this.isMouseDown = true;
+				var touch = e.touches[0];
+					var bbox = $(".pressBack")[0].getBoundingClientRect().left;
+					var offsetLeft = touch.pageX-bbox;
+			},mousemove(e){
+				if(this.isMouseDown){
+					var touch = e.touches[0];
+					var bbox = $(".pressBack")[0].getBoundingClientRect().left;
+					this.mouseX = touch.pageX-bbox;
+					
+					if(this.mouseX<=0){
+						this.isMouseDown = false;
+						this.mouseX = 0;
+					}else if(this.mouseX>= $(".pressBack").width()){
+						this.mouseX = $(".pressBack").width();
+						this.isMouseDown = false;
+					}else{
+						$(".processBar").css("width",6+this.mouseX);
+						$(".controller").css("left",this.mouseX);
+					}
+					this.getCurTime = (this.mouseX/$(".pressBack").width())*this.playProgress.duration;
+					this.currentTime = this.conversionTime(this.getCurTime);
+				}
+			},mouseup(e){
+				if(this.isMouseDown){
+					this.$emit('func',this.getCurTime);
+				}
+				this.getTime(true);
+				this.isMouseDown = false;
 			}
-			
-		},
-		mounted(){
-			this.poss =this.playProgress;
 		},
 		components:{
 			editSheet:edit
@@ -127,12 +204,6 @@
 			},
 			playProgress:{
 				type:Object
-			}
-			
-		},
-		watch:{
-			poss(value){
-				// console.log("safasf")
 			}
 		},
 	}
@@ -206,12 +277,24 @@
 		top: 50%;
 		left: 0;
 		display: inline-block;
-		height: 10px;
-		width: 10px;
-		margin-top: -5px;
-		margin-left: -5px;
-		border-radius: 50%;
+		height: 6px;
+		width: 6px;
+		margin-top: -3px;
+		/* margin-left: -5px; */
+		border-radius: 10px;
 		background: red;
+	}
+	.controller{
+		display: inline-block;
+		width: 12px;
+		height: 12px;
+		background: #fff;
+		border-radius: 50%;
+		position: absolute;
+		left: 0px;
+		border: 1px solid red;
+		top: 50%;
+		margin-top: -6px;
 	}
 	.time{
 		font-size: 12px;

@@ -98,7 +98,7 @@
 			</div>
 		</div>
 		<!--播放页面-->
-		<play ref="palySong" :songInfo="palySongInfo"></play>
+		<play ref="palySong" :songInfo="palySongInfo" :playProgress="progress"></play>
 		<!--编辑页面-->
 		<edit ref="edit"> </edit>
 	</div>
@@ -116,6 +116,10 @@
 				songsList:{},//获取歌单里面的歌曲列表信息
 				songSheet:{},//获取歌单的基本信息，不包含歌单歌曲
 				palySongInfo:{},
+				progress:{
+					end:false,
+					
+				},//音频进度
 				sheetIndex:{}
 			}
 		},
@@ -127,8 +131,6 @@
 				this.isShowSong=false
 			},
 			play(songInfo){
-				console.log(songInfo);
-				console.log(typeof songInfo);
 				this.palySongInfo=songInfo;
 				
 				this.$refs.palySong.show();
