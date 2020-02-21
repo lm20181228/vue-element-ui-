@@ -1,9 +1,9 @@
 <template>
-	<div class="playSong" v-if="isPlay" >
+	<div class="playSong" v-if="enterPlay" >
 		<el-header>
 			<el-row class="palyHeader" :gutter="24">
 				<el-col class="" :span="4">
-					<span @click="isPlay=false">
+					<span @click="enterPlay=false">
 						<!--退出-->
 						<i class="el-icon-back infoIcon"></i>
 					</span>
@@ -71,7 +71,7 @@
 						<i class="el-icon-caret-left"></i>
 					</el-col>
 					<el-col :span="4" >
-						<i class="el-icon-video-play" @click="play()"></i>
+						<i :class="playStyle" @click="play()"></i>
 					</el-col>
 					<el-col :span="4">
 						<i class="el-icon-caret-right"></i>
@@ -89,37 +89,44 @@
 <script>
 	/*获取编辑歌单信息的组件*/
 	import edit from '../songSheet/editSongSheet';
+	import putSong from "../../../static/js/getSongData.js";
 	import $ from 'jquery';
 	export default {
 		data(){
 			return{
-				isPlay:false,
+				enterPlay:false,
 				currentTime:"00:00",
 				duration:"00:00",
 				songData:"",
 				isMouseDown:false,
 				mouseX:0,
 				getCurTime:0,
+				playStyle:"el-icon-video-play",
 			}
 		},
 		methods:{
 			show(){
-				this.isPlay=true;
-				this.getTime(true);
-				// this.currentTime = this.conversionTime(this.playProgress.currentTime);
+				this.enterPlay=true;
+				if(this.playProgress.playing){
+					this.getTime(true);
+				}else{
+					this.getTime(false);
+				}
 				this.duration = this.conversionTime(this.playProgress.duration);
 			},
 			hide(){
-				this.isPlay=false;	
+				this.enterPlay=false;	
 				this.getTime(false);	
 			},
 			play(){
+				// this.$emit('isPlay');
+				putSong.$emit('isPlay');	
 				if(audio1.paused){
-					audio1.play();
-					this.getTime(true);
-				}else{
-					audio1.pause();
+					// audio1.play();
 					this.getTime(false);
+				}else{
+					// audio1.pause();
+					this.getTime(true);
 				}
 			},
 			conversionTime(time){
@@ -142,6 +149,7 @@
 			},
 			getTime(flag){
 				if(flag){
+					this.playStyle = "el-icon-video-pause";
 					if(this.playProgress.end){
 						this.getTime(false);
 					}
@@ -152,6 +160,8 @@
 						this.pressBack(this.playProgress.currentTime,this.playProgress.duration)
 					},500)
 				}else{
+					
+					this.playStyle = "el-icon-video-play";
 					clearInterval(this.songData);
 				}
 			},
@@ -189,7 +199,8 @@
 				}
 			},mouseup(e){
 				if(this.isMouseDown){
-					this.$emit('func',this.getCurTime);
+					putSong.$emit('getMsgFormSon',this.getCurTime);	
+					// this.$emit('func',this.getCurTime);
 				}
 				this.getTime(true);
 				this.isMouseDown = false;
@@ -219,7 +230,7 @@
 		height: 100vh;
 		
 		background: #e4e4e4;
-		z-index: 5;
+		z-index: 6;
 		
 	    display: flex;
 	    flex-direction: column;

@@ -22,7 +22,7 @@
 		<!--我的评论-->
 		<div>
 			<h2 class="aboutTitle">我的评论<span class="colorGray fontSmall">（仅自己可见，可在隐私设置中修改）</span></h2>
-			<div class="userComment" v-for="(item , i) in userComment">
+			<div class="userComment" v-for="(item , i) in userComment" :key="i">
 				<div id="">
 					<span class="commentImg"><img :src="item.target.img" alt="" /></span>
 					<span class="colorGray">{{item.target.name}}-{{item.target.author}}</span>

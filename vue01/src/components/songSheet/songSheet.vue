@@ -98,7 +98,7 @@
 			</div>
 		</div>
 		<!--播放页面-->
-		<play ref="palySong" :songInfo="palySongInfo" :playProgress="progress"></play>
+		<!-- <play ref="palySong" :songInfo="palySongInfo" :playProgress="progress"></play> -->
 		<!--编辑页面-->
 		<edit ref="edit"> </edit>
 	</div>
@@ -108,19 +108,25 @@
 	/*获取演唱页面的组件*/
 	import play from "../playSong/play";
 	import edit from "../songSheet/editSongSheet";
+	import putSong from "../../../static/js/getSongData.js";
 	import $ from 'jquery';
 	export default{
 		data(){
 			return {
+				audio:"",//音频信息
 				isShowSong:false,
 				songsList:{},//获取歌单里面的歌曲列表信息
 				songSheet:{},//获取歌单的基本信息，不包含歌单歌曲
 				palySongInfo:{},
 				progress:{
 					end:false,
-					
 				},//音频进度
-				sheetIndex:{}
+				sheetIndex:{},
+				isSelected:{
+					selected:false,
+					id:0,
+				},
+				selectStyle:"selectedStyle",
 			}
 		},
 		methods:{
@@ -132,8 +138,15 @@
 			},
 			play(songInfo){
 				this.palySongInfo=songInfo;
-				
-				this.$refs.palySong.show();
+				if(this.isSelected.selected === true && (this.palySongInfo.id==this.isSelected.id)){
+					// &&(this.palySongInfo.id==this.selected.id)
+					putSong.$emit('enterPlayPage',this.palySongInfo);	
+					// this.$refs.palySong.show();
+				}else{
+					this.isSelected.selected = true;
+					this.isSelected.id = this.palySongInfo.id;
+				}
+				putSong.$emit('getSongData',this.palySongInfo);	
 			},
 			getSongs(index,clickList){
 				/*保存歌曲信息*/
