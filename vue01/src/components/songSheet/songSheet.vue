@@ -81,10 +81,10 @@
 				</el-row>
 			</div>
 			<div class="">				
-				<div v-for="(item,index) in songsList.songs" :key="index" class="song" @click="play(item)" >
-					<el-row :gutter="24">
-						<el-col :span="2" class="text-center">
-							{{index}}
+				<div v-for="(item,index) in songsList.songs" :key="index" class="song"  ref='songItem' @click="play(item,index)" >
+					<el-row :gutter="24" class="songItem">
+						<el-col :span="2" class="text-center ">
+							<span v-bind:class="{'el-icon-headset redColor':item.id==isSelected.id	}">{{item.id!=isSelected.id?index+1:""}}</span>
 						</el-col>
 						<el-col :span="20" class="songInfoCol">
 							<span class="songName">{{item.name}}</span>
@@ -127,6 +127,7 @@
 					id:0,
 				},
 				selectStyle:"selectedStyle",
+				current:-1,
 			}
 		},
 		methods:{
@@ -136,7 +137,7 @@
 			hidden(){
 				this.isShowSong=false
 			},
-			play(songInfo){
+			play(songInfo,index){
 				this.palySongInfo=songInfo;
 				if(this.isSelected.selected === true && (this.palySongInfo.id==this.isSelected.id)){
 					// &&(this.palySongInfo.id==this.selected.id)
@@ -146,6 +147,8 @@
 					this.isSelected.selected = true;
 					this.isSelected.id = this.palySongInfo.id;
 				}
+				console.log(this.isSelected.id)
+				// this.current=index;
 				putSong.$emit('getSongData',this.palySongInfo);	
 			},
 			getSongs(index,clickList){
@@ -294,5 +297,13 @@
 	.songsList .song{
 		height: 50px;
 		line-height: 50px;
+	}
+	.songItem{
+		align-items: center;
+		display: flex;
+		flex-direction: row;
+	}
+	.redColor{
+		color:red;
 	}
 </style>

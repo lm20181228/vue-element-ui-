@@ -18,7 +18,7 @@
 			</el-row>
 		</el-header>
 		<el-main class="playMain">
-			<div>
+			<div :class="recordImage">
 				<!--歌曲图片-->
 				<img :src="songInfo.songImg" alt="" />
 			</div>
@@ -102,6 +102,7 @@
 				mouseX:0,
 				getCurTime:0,
 				playStyle:"el-icon-video-play",
+				recordImage:""
 			}
 		},
 		methods:{
@@ -150,6 +151,7 @@
 			getTime(flag){
 				if(flag){
 					this.playStyle = "el-icon-video-pause";
+					this.recordImage = "recordImage";
 					if(this.playProgress.end){
 						this.getTime(false);
 					}
@@ -162,6 +164,7 @@
 				}else{
 					
 					this.playStyle = "el-icon-video-play";
+					this.recordImage = "";
 					clearInterval(this.songData);
 				}
 			},
@@ -310,5 +313,13 @@
 	.time{
 		font-size: 12px;
 		height: 10px;
+	}
+	.recordImage{
+		animation:rotate 10s linear infinite;
+	}
+	
+	@keyframes 	rotate{
+		from {transform: rotate(0deg)}
+		to {transform: rotate(360deg)}
 	}
 </style>
